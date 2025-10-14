@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://cli2vwdsqw58s"]
+
+[ext_resource type="Script" uid="uid://43ry7jkk3qqp" path="res://scripts/start_screen.gd" id="1_bld0t"]
+[ext_resource type="PackedScene" uid="uid://cf5nsfxdhi1ae" path="res://MainMenu_parallax/main_menu_parallax.tscn" id="1_ufvwy"]
+[ext_resource type="Texture2D" uid="uid://4ndvq32r0tk0" path="res://sprites/Game Name/game_name.png" id="2_3rwc5"]
+[ext_resource type="FontFile" uid="uid://cyo34jd4gxqn6" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_7l7kc"]
+[ext_resource type="AudioStream" uid="uid://be0trotv7suwt" path="res://ost/03_SITF-Tranquillity.ogg" id="2_jh1pr"]
+[ext_resource type="Theme" uid="uid://bmyffoww3jo33" path="res://StartScreen/default_btn.tres" id="3_3rwc5"]
+[ext_resource type="AudioStream" uid="uid://2g8577fydd2c" path="res://ost/vgmenuselect.ogg" id="4_a6xhh"]
+[ext_resource type="AudioStream" uid="uid://ymkwl1i5qhy4" path="res://ost/Decline.wav" id="5_tdp15"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rwc5"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bld0t")
+
+[node name="BackgroundMenuSom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jh1pr")
+volume_db = -9.524
+autoplay = true
+parameters/looping = true
+
+[node name="MainMenu_parallax" parent="." instance=ExtResource("1_ufvwy")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(-237, -20)
+stream = ExtResource("4_a6xhh")
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(-237, -20)
+stream = ExtResource("5_tdp15")
+
+[node name="GameName" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_3rwc5")
+expand_mode = 5
+
+[node name="NewGame_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_3rwc5")
+theme_override_fonts/font = ExtResource("2_7l7kc")
+text = "Novo jogo"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
+
+[node name="CarregarGame_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_3rwc5")
+theme_override_fonts/font = ExtResource("2_7l7kc")
+text = "Carregar"
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
+
+[node name="Options_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_3rwc5")
+theme_override_fonts/font = ExtResource("2_7l7kc")
+text = "Opcoes"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
+
+[node name="credits_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_3rwc5")
+theme_override_fonts/font = ExtResource("2_7l7kc")
+text = "Creditos"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
+
+[node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_3rwc5")
+theme_override_fonts/font = ExtResource("2_7l7kc")
+text = "Sair"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGame_btn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/CarregarGame_btn" to="." method="_on_carregar_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
