@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="fragments-of-a-code"
+run/main_scene="uid://cli2vwdsqw58s"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/stretch/mode="viewport"
 
 [rendering]
 
