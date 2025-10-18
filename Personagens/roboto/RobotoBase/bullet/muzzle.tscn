@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://thocxytykq14"]
 
 [ext_resource type="Script" uid="uid://bjf8u2py4x34d" path="res://Personagens/roboto/RobotoBase/bullet/muzzle.gd" id="1_fmdxo"]
-[ext_resource type="Texture2D" uid="uid://ijytxhm0osf" path="res://sprites/roboto/roboto_base/robo1/effectbullet-Sheet[32height32wide].png" id="1_sfpry"]
+[ext_resource type="Texture2D" uid="uid://kemj1t30nqy3" path="res://sprites/roboto/roboto_base/robo1/effectbullet-Sheet32height32wide.png" id="1_sfpry"]
+
 
 [node name="Muzzle" type="Node2D"]
 script = ExtResource("1_fmdxo")

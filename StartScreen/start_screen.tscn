@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://43ry7jkk3qqp" path="res://scripts/start_screen.gd" id="1_bld0t"]
 [ext_resource type="PackedScene" uid="uid://cf5nsfxdhi1ae" path="res://MainMenu_parallax/main_menu_parallax.tscn" id="1_ufvwy"]
-[ext_resource type="Texture2D" uid="uid://4ndvq32r0tk0" path="res://sprites/Game Name/game_name.png" id="2_3rwc5"]
+[ext_resource type="Texture2D" uid="uid://do3imnt1f1f57" path="res://GameLogo/F.O.A.C.png" id="2_3rwc5"]
 [ext_resource type="FontFile" uid="uid://cyo34jd4gxqn6" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_7l7kc"]
 [ext_resource type="AudioStream" uid="uid://be0trotv7suwt" path="res://ost/03_SITF-Tranquillity.ogg" id="2_jh1pr"]
 [ext_resource type="Theme" uid="uid://bmyffoww3jo33" path="res://StartScreen/default_btn.tres" id="3_3rwc5"]

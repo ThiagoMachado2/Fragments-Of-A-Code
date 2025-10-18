@@ -1,15 +1,15 @@
 [gd_scene load_steps=40 format=3 uid="uid://bv20hhouqt68r"]
 
 [ext_resource type="Script" uid="uid://c46i47hnh4ey4" path="res://Personagens/roboto/RobotoBase/roboto_script/character_body_2d.gd" id="1_yaaxn"]
-[ext_resource type="Texture2D" uid="uid://ctvol8eclr5gt" path="res://sprites/roboto/roboto_base/robo1/robo1fall-Sheet[32height32wide].png" id="2_8vomm"]
-[ext_resource type="Texture2D" uid="uid://bwdqwdnu7228u" path="res://sprites/roboto/roboto_base/robot1.png" id="2_bujj7"]
+[ext_resource type="Texture2D" uid="uid://bukjayeh332ap" path="res://sprites/roboto/roboto_base/robo1/robo1fall-Sheet[32height32wide].png" id="2_8vomm"]
+[ext_resource type="Texture2D" uid="uid://0t7bj4w2vf0c" path="res://sprites/roboto/roboto_base/robo1/robotIdlle.png" id="2_bujj7"]
 [ext_resource type="PackedScene" uid="uid://thocxytykq14" path="res://Personagens/roboto/RobotoBase/bullet/muzzle.tscn" id="3_ry0ki"]
-[ext_resource type="Texture2D" uid="uid://rp46rewa1dil" path="res://sprites/roboto/roboto_base/robo1/robo1run-Sheet[32height32wide].png" id="3_yaaxn"]
-[ext_resource type="Texture2D" uid="uid://3kicbvhodxe3" path="res://sprites/roboto/roboto_base/robo1/robo1jump-Sheet[32height32wide].png" id="4_hyqx0"]
-[ext_resource type="Texture2D" uid="uid://cp7tfgy5oim40" path="res://sprites/roboto/roboto_base/robo1/robo1attack-Sheet[32height32wide].png" id="6_hyqx0"]
-[ext_resource type="Texture2D" uid="uid://ci0mcar2u13tu" path="res://sprites/roboto/roboto_base/robo1/robo1fallattack-Sheet[32height32wide].png" id="6_p0k4w"]
-[ext_resource type="Texture2D" uid="uid://yadi4hmu3tb" path="res://sprites/roboto/roboto_base/robo1/robo1runattack-Sheet[32height32wide].png" id="6_t11ci"]
-[ext_resource type="Texture2D" uid="uid://cdhyu12baxjqc" path="res://sprites/roboto/roboto_base/robo1/robo1jumpattack-Sheet[32height32wide].png" id="8_0111i"]
+[ext_resource type="Texture2D" uid="uid://dep5gyuwpx3i8" path="res://sprites/roboto/roboto_base/robo1/robo1run-Sheet[32height32wide].png" id="3_yaaxn"]
+[ext_resource type="Texture2D" uid="uid://ptvrc3wc4kq4" path="res://sprites/roboto/roboto_base/robo1/robo1jump-Sheet[32height32wide].png" id="4_hyqx0"]
+[ext_resource type="Texture2D" uid="uid://cgnjo4jk88j0r" path="res://sprites/roboto/roboto_base/robo1/robo1attack-Sheet32height32wide.png" id="6_hyqx0"]
+[ext_resource type="Texture2D" uid="uid://bql1k30005wsk" path="res://sprites/roboto/roboto_base/robo1/robo1fallattack-Sheet[48height32wide].png" id="6_p0k4w"]
+[ext_resource type="Texture2D" uid="uid://cox2bg818fiqb" path="res://sprites/roboto/roboto_base/robo1/robo1runattack-Sheet[32height32wide].png" id="6_t11ci"]
+[ext_resource type="Texture2D" uid="uid://beyrt8m73g3d" path="res://sprites/roboto/roboto_base/robo1/robo1jumpattack-Sheet[32height32wide].png" id="8_0111i"]
 [ext_resource type="PackedScene" uid="uid://bim3vjnsl0ty2" path="res://Personagens/roboto/RobotoBase/bullet/bullet.tscn" id="10_0111i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yfq5q"]
@@ -19,9 +19,9 @@ radius = 11.0
 atlas = ExtResource("2_8vomm")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yaaxn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gaux"]
 atlas = ExtResource("2_bujj7")
-region = Rect2(33, 0, 31, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j60k5"]
 atlas = ExtResource("4_hyqx0")
@@ -71,7 +71,7 @@ region = Rect2(224, 0, 32, 32)
 atlas = ExtResource("6_p0k4w")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gaux"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycmu8"]
 atlas = ExtResource("6_hyqx0")
 region = Rect2(0, 0, 32, 32)
 
@@ -131,7 +131,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yaaxn")
+"texture": SubResource("AtlasTexture_4gaux")
 }],
 "loop": true,
 "name": &"idle",
@@ -190,7 +190,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4gaux")
+"texture": SubResource("AtlasTexture_ycmu8")
 }],
 "loop": true,
 "name": &"shoot_idle",
@@ -244,17 +244,22 @@ animations = [{
 script = ExtResource("1_yaaxn")
 
 [node name="Bullet" parent="." instance=ExtResource("10_0111i")]
+visible = false
 position = Vector2(2, 6)
 
 [node name="Muzzle" parent="." instance=ExtResource("3_ry0ki")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_yfq5q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_hyqx0")
-animation = &"shoot_jump"
+animation = &"shoot_fall"
+frame_progress = 0.08965182
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
