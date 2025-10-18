@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8t2jivmxi3w0"]
+
+[ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="1_cdwwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlol3"]
+size = Vector2(357.25, 36)
+
+[node name="PersonagensTestes" type="Node2D"]
+
+[node name="RobotoBase" parent="." instance=ExtResource("1_cdwwu")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(179.375, 154)
+shape = SubResource("RectangleShape2D_jlol3")
