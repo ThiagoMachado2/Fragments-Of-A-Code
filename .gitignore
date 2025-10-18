@@ -3,10 +3,8 @@
 .nomedia
 
 # Godot-specific ignores
-.godot/imported/
-.godot/editor/
-.godot/pck/
 .import/
+*.import
 export.cfg
 export_credentials.cfg
 
