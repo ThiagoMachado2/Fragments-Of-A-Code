@@ -1,0 +1,194 @@
+[gd_scene load_steps=13 format=3 uid="uid://tidgd4xuuv22"]
+
+[ext_resource type="Script" uid="uid://nid4cefqdn3r" path="res://tela_puzzle.gd" id="1_1ey8c"]
+[ext_resource type="Texture2D" uid="uid://3i08q7vg5e45" path="res://ui/cyberpunk/1 Frames/Frame_45.png" id="1_ckdbf"]
+[ext_resource type="FontFile" uid="uid://cyo34jd4gxqn6" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_j1vop"]
+[ext_resource type="Texture2D" uid="uid://cyqppqsmvhb73" path="res://ui/cyberpunk/1 Frames/Frame_02.png" id="3_1ey8c"]
+[ext_resource type="Texture2D" uid="uid://dl7ip1elx8sg0" path="res://ui/cyberpunk/6 Buttons/3/3_04.png" id="3_obduy"]
+[ext_resource type="Texture2D" uid="uid://b6vmqrevn5mk5" path="res://ui/cyberpunk/1 Frames/Frame_06.png" id="4_obduy"]
+[ext_resource type="Texture2D" uid="uid://c4vemvdlmu5ww" path="res://ui/cyberpunk/1 Frames/Frame_05.png" id="5_m62bj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fgtc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m62bj"]
+texture = ExtResource("3_obduy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nehqw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eij8r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0jodx"]
+
+[node name="TelaPuzzle" type="CanvasLayer"]
+script = ExtResource("1_1ey8c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -156.0
+offset_right = 246.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24840015, 0.24840018, 0.24840015, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ckdbf")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.25
+offset_top = -138.5
+offset_right = 249.75
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 9.0
+offset_right = -12.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_j1vop")
+theme_override_fonts/bold_font = ExtResource("2_j1vop")
+theme_override_fonts/bold_italics_font = ExtResource("2_j1vop")
+theme_override_fonts/italics_font = ExtResource("2_j1vop")
+theme_override_fonts/mono_font = ExtResource("2_j1vop")
+theme_override_font_sizes/normal_font_size = 9
+theme_override_font_sizes/bold_font_size = 9
+theme_override_font_sizes/bold_italics_font_size = 9
+theme_override_font_sizes/italics_font_size = 9
+theme_override_font_sizes/mono_font_size = 9
+bbcode_enabled = true
+tab_size = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/Panel/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HSeparator4" type="HSeparator" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0fgtc")
+
+[node name="BotaoResposta1" type="Button" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+texture_repeat = 1
+clip_contents = true
+custom_minimum_size = Vector2(92, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_j1vop")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_m62bj")
+
+[node name="HSeparator" type="HSeparator" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nehqw")
+
+[node name="BotaoResposta2" type="Button" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+texture_repeat = 1
+clip_contents = true
+custom_minimum_size = Vector2(92, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_j1vop")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_m62bj")
+
+[node name="HSeparator2" type="HSeparator" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_eij8r")
+
+[node name="BotaoResposta3" type="Button" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+texture_repeat = 1
+clip_contents = true
+custom_minimum_size = Vector2(92, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_j1vop")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_m62bj")
+
+[node name="HSeparator3" type="HSeparator" parent="ColorRect/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0jodx")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/Panel/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 474.0
+offset_top = -4.0
+offset_right = 506.0
+offset_bottom = 283.0
+texture = ExtResource("4_obduy")
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 29.0
+offset_bottom = 275.0
+texture = ExtResource("5_m62bj")
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 267.0
+offset_right = 503.0
+offset_bottom = 299.0
+texture = ExtResource("3_1ey8c")
+
+[node name="TextureRect4" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 501.0
+offset_bottom = 25.0
+texture = ExtResource("3_1ey8c")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

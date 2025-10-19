@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4i6kt2ppan0i"]
+
+[ext_resource type="Script" uid="uid://cb8ywepigtqwr" path="res://estacao_upgrade.gd" id="1_j4uox"]
+[ext_resource type="Texture2D" uid="uid://cscfyfsrbaqej" path="res://tileset/industrial-zone/4 Animated objects/Screen2.png" id="2_c3nxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jokfp"]
+size = Vector2(21, 36)
+
+[node name="EstacaoUpgrade" type="Area2D"]
+script = ExtResource("1_j4uox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c3nxa")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_jokfp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

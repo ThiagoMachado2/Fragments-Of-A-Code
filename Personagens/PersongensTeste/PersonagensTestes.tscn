@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8t2jivmxi3w0"]
+[gd_scene load_steps=8 format=3 uid="uid://b8t2jivmxi3w0"]
 
 [ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="1_cdwwu"]
+[ext_resource type="PackedScene" uid="uid://b4i6kt2ppan0i" path="res://estacao_upgrade.tscn" id="2_vvjha"]
+[ext_resource type="PackedScene" uid="uid://tidgd4xuuv22" path="res://tela_puzzle.tscn" id="3_rga27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdwwu"]
 size = Vector2(168.25, 36)
@@ -36,3 +38,10 @@ shape = SubResource("RectangleShape2D_rga27")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(405.188, 33)
 shape = SubResource("RectangleShape2D_34h2i")
+
+[node name="EstacaoUpgrade" parent="." instance=ExtResource("2_vvjha")]
+texture_filter = 1
+position = Vector2(294, 63)
+
+[node name="TelaPuzzle" parent="." instance=ExtResource("3_rga27")]
+visible = false
