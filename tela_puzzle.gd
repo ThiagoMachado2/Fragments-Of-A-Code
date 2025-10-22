@@ -10,8 +10,7 @@ signal puzzle_resolvido(habilidade_desbloqueada)
 @onready var botoes_container = $ColorRect/Panel/VBoxContainer/HBoxContainer
 @onready var botoes_resposta = [$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta1,
 								$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta2,
-								$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta3
-]
+								$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta3]
 
 # Variáveis internas para guardar a informação do puzzle atual.
 var _habilidade_a_desbloquear = ""
@@ -63,6 +62,7 @@ func mostrar_puzzle_codigo(instrucao, codigo_antes, opcoes, correta, codigo_depo
 
 # Esta função é chamada QUANDO QUALQUER um dos botões é pressionado.
 func _on_botao_resposta_pressed(botao_pressionado):
+	print("Um botão foi pressionado! O texto é: '", botao_pressionado.text, "'")
 	# Verifica se o texto do botão pressionado é o mesmo da resposta correta.
 	if botao_pressionado.text == _resposta_correta:
 		# Acertou! Emite o sinal para o Roboto receber a habilidade.

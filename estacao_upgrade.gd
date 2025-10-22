@@ -16,8 +16,8 @@ extends Area2D
 
 # As opções de código que aparecerão nos botões.
 @export var opcoes_de_codigo: Array[String] = [
-	"    velocidade.x = FORCA_DASH", 
-	"    velocidade.y = FORCA_PULO", 
+	"    velocidade.x = FORCA_DASH",
+	"    velocidade.y = FORCA_PULO",
     "    ativar_escudo()"
 ]
 
