@@ -9,7 +9,8 @@ var has_hit: bool = false
 
 func _ready() -> void:
 	if area:
-		area.area_entered.connect(_on_area_entered)
+		area.body_entered.connect(_on_body_entered)
+		#area.area_entered.connect(_on_area_entered)
 	else:
 		push_warning("Bullet: Area2D não encontrada — colisões não funcionarão.")
 
@@ -26,3 +27,19 @@ func _on_area_entered(area_entered: Area2D) -> void:
 		return
 	has_hit = true
 	queue_free()
+	
+	# Renomeie esta função e mude o parâmetro
+func _on_body_entered(body: Node2D) -> void:
+	if has_hit:
+		return
+
+	# Verifica se o corpo que acertamos está no grupo "Enemies"
+	if body.is_in_group("Enemies"):
+		has_hit = true
+		body.take_damage(1) # Chama a função de dano do inimigo
+		queue_free() # Destrói a bala
+
+	# Destrói a bala se acertar uma parede (StaticBody2D)
+	if body is StaticBody2D:
+		has_hit = true
+		queue_free()

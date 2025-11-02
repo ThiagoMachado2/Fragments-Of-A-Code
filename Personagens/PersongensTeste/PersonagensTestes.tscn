@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8t2jivmxi3w0"]
+[gd_scene load_steps=9 format=3 uid="uid://b8t2jivmxi3w0"]
 
 [ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="1_cdwwu"]
 [ext_resource type="PackedScene" uid="uid://b4i6kt2ppan0i" path="res://estacao_upgrade.tscn" id="2_vvjha"]
 [ext_resource type="PackedScene" uid="uid://tidgd4xuuv22" path="res://tela_puzzle.tscn" id="3_rga27"]
+[ext_resource type="PackedScene" uid="uid://s3e7x15iudu0" path="res://enemy_1.tscn" id="4_34h2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdwwu"]
 size = Vector2(168.25, 36)
@@ -45,3 +46,6 @@ position = Vector2(294, 63)
 
 [node name="TelaPuzzle" parent="." instance=ExtResource("3_rga27")]
 visible = false
+
+[node name="enemy1" parent="." instance=ExtResource("4_34h2i")]
+position = Vector2(130, 129)

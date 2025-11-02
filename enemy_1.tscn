@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://s3e7x15iudu0"]
+
+[ext_resource type="Texture2D" uid="uid://px00vojaifbi" path="res://sprites/antagonistas/enemy1/enemy1[32height32wide].png" id="1_mbxyh"]
+[ext_resource type="Script" uid="uid://cnjaqbhkai77m" path="res://enemy_1.gd" id="1_pjquw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbxyh"]
+atlas = ExtResource("1_mbxyh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjquw"]
+atlas = ExtResource("1_mbxyh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_663o1"]
+atlas = ExtResource("1_mbxyh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rg8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbxyh")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjquw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_663o1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mbxyh"]
+radius = 7.0
+height = 16.0
+
+[node name="enemy1" type="CharacterBody2D"]
+script = ExtResource("1_pjquw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6rg8l")
+animation = &"idle"
+frame_progress = 0.8465641
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_mbxyh")
+
+[node name="FirePoint" type="Marker2D" parent="."]
+position = Vector2(-6, 0)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(-1, 0)
+target_position = Vector2(200, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-1, 0)
+target_position = Vector2(-200, 0)
