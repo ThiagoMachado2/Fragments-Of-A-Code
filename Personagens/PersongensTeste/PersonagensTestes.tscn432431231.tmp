@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8t2jivmxi3w0"]
+[gd_scene load_steps=11 format=3 uid="uid://b8t2jivmxi3w0"]
 
 [ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="1_cdwwu"]
 [ext_resource type="PackedScene" uid="uid://b4i6kt2ppan0i" path="res://estacao_upgrade.tscn" id="2_vvjha"]
 [ext_resource type="PackedScene" uid="uid://tidgd4xuuv22" path="res://tela_puzzle.tscn" id="3_rga27"]
 [ext_resource type="PackedScene" uid="uid://s3e7x15iudu0" path="res://enemy_1.tscn" id="4_34h2i"]
 [ext_resource type="PackedScene" uid="uid://betm37bvrmtx3" path="res://enemy_2.tscn" id="5_0o5vd"]
-[ext_resource type="PackedScene" uid="uid://ckj2m3dvionjd" path="res://enemy_3.tscn" id="6_vvmwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdwwu"]
 size = Vector2(168.25, 36)
@@ -17,13 +16,10 @@ size = Vector2(127.625, 36)
 size = Vector2(33.625, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34h2i"]
-size = Vector2(709, 36)
+size = Vector2(127.14111, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o5vd"]
 size = Vector2(20, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmwt"]
-size = Vector2(20, 183)
 
 [node name="PersonagensTestes" type="Node2D"]
 
@@ -45,16 +41,12 @@ position = Vector2(348, 76)
 shape = SubResource("RectangleShape2D_rga27")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(760.5, 33)
+position = Vector2(469.57056, 33)
 shape = SubResource("RectangleShape2D_34h2i")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(396, -3)
+position = Vector2(393, -5.5)
 shape = SubResource("RectangleShape2D_0o5vd")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-10, 81)
-shape = SubResource("RectangleShape2D_vvmwt")
 
 [node name="EstacaoUpgrade" parent="." instance=ExtResource("2_vvjha")]
 texture_filter = 1
@@ -64,11 +56,7 @@ position = Vector2(294, 63)
 visible = false
 
 [node name="enemy1" parent="." instance=ExtResource("4_34h2i")]
-position = Vector2(976, -10)
+position = Vector2(130, 111)
 
 [node name="Enemy2" parent="." instance=ExtResource("5_0o5vd")]
 position = Vector2(465, 0)
-
-[node name="Enemy3" parent="." instance=ExtResource("6_vvmwt")]
-position = Vector2(1, 4)
-rotation = -1.5707964

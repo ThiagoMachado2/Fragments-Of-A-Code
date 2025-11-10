@@ -241,6 +241,8 @@ animations = [{
 }]
 
 [node name="RobotoBase" type="CharacterBody2D"]
+texture_filter = 1
+texture_repeat = 1
 script = ExtResource("1_yaaxn")
 
 [node name="Bullet" parent="." instance=ExtResource("10_0111i")]
@@ -255,12 +257,12 @@ shape = SubResource("CapsuleShape2D_yfq5q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture_repeat = 1
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_hyqx0")
-animation = &"shoot_fall"
-frame_progress = 0.08965182
+animation = &"fall"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 position_smoothing_enabled = true
+
+[node name="Camera2D2" type="Camera2D" parent="."]

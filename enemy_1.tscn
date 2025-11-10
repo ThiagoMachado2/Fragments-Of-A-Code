@@ -1,7 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://s3e7x15iudu0"]
+[gd_scene load_steps=23 format=3 uid="uid://s3e7x15iudu0"]
 
 [ext_resource type="Texture2D" uid="uid://px00vojaifbi" path="res://sprites/antagonistas/enemy1/enemy1[32height32wide].png" id="1_mbxyh"]
 [ext_resource type="Script" uid="uid://cnjaqbhkai77m" path="res://enemy_1.gd" id="1_pjquw"]
+[ext_resource type="Texture2D" uid="uid://bj5f21e10ookq" path="res://sprites/antagonistas/enemy1/enemy1_flyingeffect[32height32wide].png" id="3_ovk8a"]
+[ext_resource type="Texture2D" uid="uid://d0iatwwq8okve" path="res://sprites/antagonistas/enemy1/enemy1_attack_effect[32height32wide].png" id="4_gqj32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovk8a"]
+atlas = ExtResource("1_mbxyh")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbxyh"]
 atlas = ExtResource("1_mbxyh")
@@ -15,8 +21,20 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("1_mbxyh")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqj32"]
+atlas = ExtResource("1_mbxyh")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rg8l"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovk8a")
+}],
+"loop": true,
+"name": &"aiming",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mbxyh")
@@ -31,41 +49,132 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_663o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqj32")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 4.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wswjf"]
+atlas = ExtResource("3_ovk8a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa1y5"]
+atlas = ExtResource("3_ovk8a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3u0vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wswjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa1y5")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5scw"]
+atlas = ExtResource("4_gqj32")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1piqj"]
+atlas = ExtResource("4_gqj32")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq6mw"]
+atlas = ExtResource("4_gqj32")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7p17"]
+atlas = ExtResource("4_gqj32")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kq7j"]
+atlas = ExtResource("4_gqj32")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xy0e"]
+atlas = ExtResource("4_gqj32")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5inj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5scw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1piqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq6mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7p17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kq7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xy0e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mbxyh"]
 radius = 7.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovk8a"]
+radius = 65.00769
+
 [node name="enemy1" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_pjquw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6rg8l")
-animation = &"idle"
-frame_progress = 0.8465641
+animation = &"aiming"
 flip_h = true
 
+[node name="FlyingEffect" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3u0vs")
+animation = &"fly"
+
+[node name="AttackEffect" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(11.5, -0.8)
+sprite_frames = SubResource("SpriteFrames_r5inj")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_mbxyh")
 
 [node name="FirePoint" type="Marker2D" parent="."]
+visible = false
 position = Vector2(-6, 0)
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.5
 one_shot = true
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(-1, 0)
-target_position = Vector2(200, 0)
+[node name="AggroArea" type="Area2D" parent="."]
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(-1, 0)
-target_position = Vector2(-200, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+visible = false
+shape = SubResource("CircleShape2D_ovk8a")
+
+[node name="WallRay" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(20, 0)
