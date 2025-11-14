@@ -49,8 +49,8 @@
 [ext_resource type="Texture2D" uid="uid://d23kj04ektxkh" path="res://tileset/industrial-zone/4 Animated objects/Entry.png" id="47_ruxmr"]
 [ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="48_pb2bu"]
 [ext_resource type="PackedScene" uid="uid://dcgxfb56p5111" path="res://enemy_1.tscn" id="49_be470"]
-[ext_resource type="PackedScene" path="res://enemy_2.tscn" id="49_kxs55"]
-[ext_resource type="PackedScene" path="res://enemy_3.tscn" id="51_es33p"]
+[ext_resource type="PackedScene" uid="uid://betm37bvrmtx3" path="res://enemy_2.tscn" id="49_kxs55"]
+[ext_resource type="PackedScene" uid="uid://ckj2m3dvionjd" path="res://enemy_3.tscn" id="51_es33p"]
 [ext_resource type="PackedScene" uid="uid://b4i6kt2ppan0i" path="res://estacao_upgrade.tscn" id="52_sxugk"]
 [ext_resource type="PackedScene" uid="uid://tidgd4xuuv22" path="res://tela_puzzle.tscn" id="53_eqspm"]
 [ext_resource type="PackedScene" uid="uid://o56vb2nv011a" path="res://hud.tscn" id="54_lscnr"]
@@ -2001,10 +2001,10 @@ opcao_correta = "velocidade.y = FORCA_PULO"
 [node name="EstacaoUpgrade2" parent="." instance=ExtResource("52_sxugk")]
 position = Vector2(77, -5)
 
+[node name="HUD" parent="." instance=ExtResource("54_lscnr")]
+
 [node name="TelaPuzzle" parent="." instance=ExtResource("53_eqspm")]
 visible = false
-
-[node name="HUD" parent="." instance=ExtResource("54_lscnr")]
 
 [node name="Smasher2" parent="." instance=ExtResource("55_tdyin")]
 position = Vector2(703, -33)
