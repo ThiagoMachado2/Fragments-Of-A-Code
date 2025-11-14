@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu0sewe3ufuvk"]
+
+[ext_resource type="Script" uid="uid://b2jhv16sxwksm" path="res://health_pip.gd" id="1_fwerx"]
+
+[node name="HealthPip" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fwerx")

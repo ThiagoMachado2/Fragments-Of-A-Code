@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="1_cdwwu"]
 [ext_resource type="PackedScene" uid="uid://b4i6kt2ppan0i" path="res://estacao_upgrade.tscn" id="2_vvjha"]
 [ext_resource type="PackedScene" uid="uid://tidgd4xuuv22" path="res://tela_puzzle.tscn" id="3_rga27"]
-[ext_resource type="PackedScene" uid="uid://s3e7x15iudu0" path="res://enemy_1.tscn" id="4_34h2i"]
-[ext_resource type="PackedScene" uid="uid://betm37bvrmtx3" path="res://enemy_2.tscn" id="5_0o5vd"]
-[ext_resource type="PackedScene" uid="uid://ckj2m3dvionjd" path="res://enemy_3.tscn" id="6_vvmwt"]
+[ext_resource type="PackedScene" uid="uid://dcgxfb56p5111" path="res://enemy_1.tscn" id="4_34h2i"]
+[ext_resource type="PackedScene" path="res://enemy_2.tscn" id="5_0o5vd"]
+[ext_resource type="PackedScene" path="res://enemy_3.tscn" id="6_vvmwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdwwu"]
 size = Vector2(168.25, 36)

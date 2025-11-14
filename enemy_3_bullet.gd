@@ -17,6 +17,6 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body.name == "RobotoBase":
 		print("Armadilha (Enemy3) acertou o jogador!")
-		# body.take_damage(1)
+		body.take_damage(1)
 	
 	queue_free()

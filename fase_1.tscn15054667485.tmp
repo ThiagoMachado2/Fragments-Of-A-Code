@@ -1,6 +1,5 @@
-[gd_scene load_steps=123 format=4 uid="uid://bf7qst4nr5hip"]
+[gd_scene load_steps=122 format=4 uid="uid://bf7qst4nr5hip"]
 
-[ext_resource type="Script" uid="uid://dhe0kehd6mpau" path="res://fase_1.gd" id="1_tdyin"]
 [ext_resource type="Texture2D" uid="uid://btwun6kylonlh" path="res://tileset/industrial-zone/1 Tiles/IndustrialTile_57.png" id="1_wqmjn"]
 [ext_resource type="Texture2D" uid="uid://cb6xbf11fkrne" path="res://tileset/industrial-zone/3 Objects/Box1.png" id="2_rwqh0"]
 [ext_resource type="Texture2D" uid="uid://cjh480m4s000o" path="res://tileset/industrial-zone/3 Objects/Locker4.png" id="3_3yev8"]
@@ -1781,7 +1780,6 @@ sources/0 = SubResource("TileSetAtlasSource_es33p")
 size = Vector2(37, 696)
 
 [node name="Fase1" type="Node2D"]
-script = ExtResource("1_tdyin")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6r5fl")
@@ -1865,7 +1863,6 @@ physics_material_override = SubResource("PhysicsMaterial_hj0kf")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Eletric Trap/Eletric Trap"]
-visible = false
 position = Vector2(223, -8)
 shape = SubResource("CapsuleShape2D_gavdg")
 
@@ -1931,6 +1928,11 @@ tile_set = SubResource("TileSet_sxugk")
 
 [node name="RobotoBase" parent="." instance=ExtResource("48_pb2bu")]
 position = Vector2(16, 271)
+bullet_offset = Vector2(10, 5)
+fire_rate = 0.3
+max_health = 4
+DASH_SPEED = 350.0
+DASH_DURATION = 0.2
 
 [node name="Caixas4" type="StaticBody2D" parent="."]
 position = Vector2(78, -94)
@@ -1995,7 +1997,7 @@ position = Vector2(1175, 109)
 habilidade_para_desbloquear = "PuloDuplo"
 instrucao = "Complete o código para re-calibrar os propulsores."
 codigo_antes_do_bloco = "if pode_pular_novamente:"
-opcoes_de_codigo = Array[String](["velocidade.y = FORCA_PULO", "velocidade.x = FORCA_PULO", "parar_de_pular()"])
+opcoes_de_codigo = Array[String](["\"velocidade.y = FORCA_PULO\"", "\"velocidade.x = FORCA_PULO\"", "\"parar_de_pular()\""])
 opcao_correta = "velocidade.y = FORCA_PULO"
 
 [node name="EstacaoUpgrade2" parent="." instance=ExtResource("52_sxugk")]
@@ -2005,6 +2007,7 @@ position = Vector2(77, -5)
 visible = false
 
 [node name="HUD" parent="." instance=ExtResource("54_lscnr")]
+visible = false
 
 [node name="Smasher2" parent="." instance=ExtResource("55_tdyin")]
 position = Vector2(703, -33)

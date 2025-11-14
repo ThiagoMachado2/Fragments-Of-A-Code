@@ -53,8 +53,8 @@ func _unhandled_input(event):
 		
 		# AQUI ESTÁ A MÁGICA:
 		# 1. Encontramos a nossa TelaPuzzle na cena principal do jogo.
-		#    !! ATENÇÃO: Altere "NomeDaSuaCenaPrincipal" para o nome real da sua fase !!
-		var tela_puzzle = get_tree().root.get_node("PersonagensTestes/TelaPuzzle")
+		#    (O caminho "Fase1/TelaPuzzle" deve estar correto)
+		var tela_puzzle = get_tree().root.get_node("Fase1/TelaPuzzle")
 		
 		# 2. Chamamos a função 'mostrar_puzzle_codigo' e passamos todos os dados.
 		tela_puzzle.mostrar_puzzle_codigo(

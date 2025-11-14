@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bim3vjnsl0ty2"]
 
 [ext_resource type="Script" uid="uid://cx3psq1xdyh84" path="res://Personagens/roboto/RobotoBase/bullet/bullet.gd" id="1_2nivt"]
-[ext_resource type="Texture2D" uid="uid://cam7us25brs3d" path="res://sprites/roboto/roboto_base/robo1/bullet[32height32wide].png" id="1_yf7rg"]
+[ext_resource type="Texture2D" uid="uid://le6m3tu2xlk6" path="res://sprites/roboto/roboto_base/robo1/bullet[32height32wide].png" id="1_yf7rg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2nivt"]
+radius = 4.0
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_2nivt")

@@ -27,7 +27,7 @@ func _on_button_pressed() -> void:
 
 func _on_new_game_btn_pressed() -> void:
 	_on_button_pressed()
-	# get_tree().change_scene_to_file("res://caminho/da_sua_cena.tscn")
+	get_tree().change_scene_to_file("res://fase_1.tscn")
 
 func _on_carregar_game_btn_pressed() -> void:
 	_on_button_pressed()

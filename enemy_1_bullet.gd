@@ -20,7 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "RobotoBase":
 		print("Acertou o jogador!")
 		# No futuro, o script do roboto precisará ter a função take_damage
-		# body.take_damage(1) 
+		body.take_damage(1) 
 		queue_free() # Destrói o projétil
 		return # Para a execução aqui
 

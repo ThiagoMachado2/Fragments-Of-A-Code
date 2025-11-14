@@ -8,7 +8,7 @@ enum State { IDLE, PATROL, ATTACK, RETURNING }
 var current_state = State.IDLE
 
 var health = 3
-# --- CORREÇÃO: Começa andando para a ESQUERDA (padrão do sprite) ---
+# Começa andando para a ESQUERDA (padrão do sprite) ---
 var patrol_speed = -30.0 
 var player_node = null
 
@@ -160,7 +160,7 @@ func shoot():
 		return
 
 	anim_sprite.play("attack")
-	attack_effect.play("fire")
+	#attack_effect.play("fire")
 	
 	var bullet = ENEMY_BULLET_SCENE.instantiate()
 	bullet.global_position = fire_point.global_position

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://o56vb2nv011a"]
+
+[ext_resource type="Script" uid="uid://fupd1r6s6se7" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="PackedScene" uid="uid://cu0sewe3ufuvk" path="res://health_pip.tscn" id="2_8sq4i"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_64ctp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthPip" parent="HBoxContainer" instance=ExtResource("2_8sq4i")]
+layout_mode = 2
+
+[node name="HealthPip2" parent="HBoxContainer" instance=ExtResource("2_8sq4i")]
+layout_mode = 2
+
+[node name="HealthPip3" parent="HBoxContainer" instance=ExtResource("2_8sq4i")]
+layout_mode = 2
+
+[node name="HealthPip4" parent="HBoxContainer" instance=ExtResource("2_8sq4i")]
+layout_mode = 2

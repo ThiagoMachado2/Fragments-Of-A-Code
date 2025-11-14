@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://di28bwr3l3gao"]
+
+[ext_resource type="Script" uid="uid://by804dxacfdhe" path="res://smasher.gd" id="1_5d4l0"]
+[ext_resource type="Texture2D" uid="uid://dd2uplqaeah0k" path="res://tileset/industrial-zone/4 Animated objects/Hammer.png" id="1_868x8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_868x8"]
+atlas = ExtResource("1_868x8")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d4l0"]
+atlas = ExtResource("1_868x8")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqsgi"]
+atlas = ExtResource("1_868x8")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n4d8"]
+atlas = ExtResource("1_868x8")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxv8k"]
+atlas = ExtResource("1_868x8")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd76o"]
+atlas = ExtResource("1_868x8")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs4tr"]
+atlas = ExtResource("1_868x8")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb3ak"]
+atlas = ExtResource("1_868x8")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln6d5"]
+atlas = ExtResource("1_868x8")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5eolm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_868x8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d4l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqsgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n4d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxv8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd76o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs4tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb3ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln6d5")
+}],
+"loop": true,
+"name": &"smashing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_868x8"]
+size = Vector2(30, 43.25)
+
+[node name="Smasher" type="Node2D"]
+script = ExtResource("1_5d4l0")
+
+[node name="Smashf1s" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5eolm")
+animation = &"smashing"
+frame = 7
+frame_progress = 0.32096514
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(0, -10.375)
+shape = SubResource("RectangleShape2D_868x8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

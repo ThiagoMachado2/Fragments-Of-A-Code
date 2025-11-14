@@ -16,7 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# Causa dano no jogador
 	if body.name == "RobotoBase":
 		print("Inimigo 2 acertou o jogador!")
-		# body.take_damage(1) # Descomente quando o Roboto tiver essa função
+		body.take_damage(1) # Descomente quando o Roboto tiver essa função
 
 	# Destrói o projétil ao acertar o jogador ou uma parede
 	queue_free()

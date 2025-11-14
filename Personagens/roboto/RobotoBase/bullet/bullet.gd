@@ -32,12 +32,17 @@ func _on_area_entered(area_entered: Area2D) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if has_hit:
 		return
+		
+	# Se a bala colidir com o jogador que a atirou, ignore.
+	if body.name == "RobotoBase":
+		return # Não faz nada, apenas continua voando
 
 	# Verifica se o corpo que acertamos está no grupo "Enemies"
 	if body.is_in_group("Enemies"):
 		has_hit = true
 		body.take_damage(1) # Chama a função de dano do inimigo
 		queue_free() # Destrói a bala
+		return # Não continue
 
 	# Destrói a bala se acertar uma parede (StaticBody2D)
 	if body is StaticBody2D:
