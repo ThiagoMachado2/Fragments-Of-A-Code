@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bb36awvlw13we"]
+
+[ext_resource type="Script" uid="uid://crn3u24jgmrab" path="res://eletric_trap.gd" id="1_7frcu"]
+[ext_resource type="Texture2D" uid="uid://cmun0c5mxewrs" path="res://tileset/power-station/4 Animated objects/Trap.png" id="2_mlpt7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r5v8"]
+atlas = ExtResource("2_mlpt7")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsrej"]
+atlas = ExtResource("2_mlpt7")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8g0d"]
+atlas = ExtResource("2_mlpt7")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88gmi"]
+atlas = ExtResource("2_mlpt7")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjnsc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r5v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsrej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8g0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88gmi")
+}],
+"loop": true,
+"name": &"active",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ippm5"]
+radius = 28.0
+height = 56.0
+
+[node name="EletricTrap" type="Node2D"]
+script = ExtResource("1_7frcu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tjnsc")
+animation = &"active"
+
+[node name="ShockArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockArea"]
+visible = false
+shape = SubResource("CapsuleShape2D_ippm5")

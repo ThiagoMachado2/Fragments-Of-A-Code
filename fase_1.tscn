@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=4 uid="uid://bf7qst4nr5hip"]
+[gd_scene load_steps=119 format=4 uid="uid://bf7qst4nr5hip"]
 
 [ext_resource type="Script" uid="uid://dhe0kehd6mpau" path="res://fase_1.gd" id="1_tdyin"]
 [ext_resource type="Texture2D" uid="uid://btwun6kylonlh" path="res://tileset/industrial-zone/1 Tiles/IndustrialTile_57.png" id="1_wqmjn"]
@@ -45,8 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://cyhva4ece8c78" path="res://tileset/pirate-bay/1 Tiles/BayTile_11.png" id="42_65tdw"]
 [ext_resource type="Texture2D" uid="uid://dfbin0vgfqvfx" path="res://tileset/industrial-zone/3 Objects/Box6.png" id="43_y3ayg"]
 [ext_resource type="Texture2D" uid="uid://d13cic0luidqq" path="res://tileset/industrial-zone/3 Objects/Box5.png" id="44_6tc3s"]
-[ext_resource type="Texture2D" uid="uid://cmun0c5mxewrs" path="res://tileset/power-station/4 Animated objects/Trap.png" id="46_knle5"]
-[ext_resource type="Texture2D" uid="uid://d23kj04ektxkh" path="res://tileset/industrial-zone/4 Animated objects/Entry.png" id="47_ruxmr"]
+[ext_resource type="PackedScene" uid="uid://bb36awvlw13we" path="res://eletric_trap.tscn" id="47_vykae"]
 [ext_resource type="PackedScene" uid="uid://bv20hhouqt68r" path="res://Personagens/roboto/RobotoBase/roboto.tscn" id="48_pb2bu"]
 [ext_resource type="PackedScene" uid="uid://dcgxfb56p5111" path="res://enemy_1.tscn" id="49_be470"]
 [ext_resource type="PackedScene" uid="uid://betm37bvrmtx3" path="res://enemy_2.tscn" id="49_kxs55"]
@@ -55,6 +54,7 @@
 [ext_resource type="PackedScene" uid="uid://tidgd4xuuv22" path="res://tela_puzzle.tscn" id="53_eqspm"]
 [ext_resource type="PackedScene" uid="uid://o56vb2nv011a" path="res://hud.tscn" id="54_lscnr"]
 [ext_resource type="PackedScene" uid="uid://di28bwr3l3gao" path="res://smasher.tscn" id="55_tdyin"]
+[ext_resource type="PackedScene" uid="uid://dadv6u7xwy3rh" path="res://level_gate.tscn" id="55_vykae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2f27"]
 texture = ExtResource("1_wqmjn")
@@ -1754,16 +1754,6 @@ sources/0 = SubResource("TileSetAtlasSource_2qw5v")
 sources/1 = SubResource("TileSetAtlasSource_j3fs0")
 sources/2 = SubResource("TileSetAtlasSource_mv3wl")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yxcya"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gavdg"]
-radius = 16.0
-height = 46.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j8ywq"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hj0kf"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb2bu"]
 size = Vector2(26, 20)
 
@@ -1841,51 +1831,6 @@ texture = ExtResource("43_y3ayg")
 [node name="Box5" type="Sprite2D" parent="."]
 position = Vector2(1164, 273)
 texture = ExtResource("44_6tc3s")
-
-[node name="Eletric Trap" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_yxcya")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Eletric Trap"]
-visible = false
-position = Vector2(223, -8)
-shape = SubResource("CapsuleShape2D_gavdg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Eletric Trap"]
-position = Vector2(223, -9)
-texture = ExtResource("46_knle5")
-hframes = 4
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Eletric Trap/Sprite2D"]
-sprite_frames = SubResource("SpriteFrames_j8ywq")
-
-[node name="Eletric Trap" type="StaticBody2D" parent="Eletric Trap"]
-position = Vector2(513, -206)
-physics_material_override = SubResource("PhysicsMaterial_hj0kf")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Eletric Trap/Eletric Trap"]
-visible = false
-position = Vector2(223, -8)
-shape = SubResource("CapsuleShape2D_gavdg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Eletric Trap/Eletric Trap"]
-position = Vector2(223, -9)
-texture = ExtResource("46_knle5")
-hframes = 4
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Eletric Trap/Eletric Trap/Sprite2D"]
-sprite_frames = SubResource("SpriteFrames_j8ywq")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(1255.5, -287)
-scale = Vector2(1.5312481, 1)
-texture = ExtResource("47_ruxmr")
-hframes = 8
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/Sprite2D"]
 
 [node name="Caixas3" type="StaticBody2D" parent="."]
 position = Vector2(7, 3)
@@ -2001,11 +1946,6 @@ opcao_correta = "velocidade.y = FORCA_PULO"
 [node name="EstacaoUpgrade2" parent="." instance=ExtResource("52_sxugk")]
 position = Vector2(77, -5)
 
-[node name="HUD" parent="." instance=ExtResource("54_lscnr")]
-
-[node name="TelaPuzzle" parent="." instance=ExtResource("53_eqspm")]
-visible = false
-
 [node name="Smasher2" parent="." instance=ExtResource("55_tdyin")]
 position = Vector2(703, -33)
 smash_height_offset = 20.0
@@ -2019,3 +1959,18 @@ smash_height_offset = 20.0
 position = Vector2(804, -32)
 wait_at_bottom_duration = 0.3
 smash_height_offset = 20.0
+
+[node name="EletricTrap" parent="." instance=ExtResource("47_vykae")]
+position = Vector2(224, -12)
+
+[node name="EletricTrap2" parent="." instance=ExtResource("47_vykae")]
+position = Vector2(736, -217)
+
+[node name="LevelGate" parent="." instance=ExtResource("55_vykae")]
+position = Vector2(1238, -287)
+proxima_fase = "uid://bf7qst4nr5hip"
+
+[node name="HUD" parent="." instance=ExtResource("54_lscnr")]
+
+[node name="TelaPuzzle" parent="." instance=ExtResource("53_eqspm")]
+visible = false
