@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://3yshae0y20ci"]
+
+[ext_resource type="FontFile" uid="uid://3d37q633sk7l" path="res://fontes/CyberpunkCraftpixPixel.otf" id="1_4ctsq"]
+[ext_resource type="Texture2D" uid="uid://dofrdmnbu4vcr" path="res://MenuPause/PauseLogo.png" id="1_d03xs"]
+[ext_resource type="Theme" uid="uid://oik810sixw0l" path="res://MenuPause/pause_menu.tres" id="1_l7oia"]
+[ext_resource type="Script" uid="uid://buu7pit1ikxs7" path="res://MenuPause/pause_menu.gd" id="1_vj4dl"]
+[ext_resource type="AudioStream" uid="uid://2g8577fydd2c" path="res://ost/vgmenuselect.ogg" id="2_qowx4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d03xs"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_qowx4"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_qowx4"]
+events = [SubResource("InputEventAction_qowx4")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj4dl"]
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_vj4dl")
+
+[node name="bg_overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.1882353)
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -40.0
+offset_right = 53.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu_holder" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="BoxContainer/menu_holder"]
+stream = ExtResource("2_qowx4")
+
+[node name="PauseLogo" type="TextureRect" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+texture = ExtResource("1_d03xs")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d03xs")
+
+[node name="resume_btn" type="Button" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+theme = ExtResource("1_l7oia")
+theme_override_fonts/font = ExtResource("1_4ctsq")
+shortcut = SubResource("Shortcut_qowx4")
+text = "Continue
+"
+
+[node name="HSeparator2" type="HSeparator" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vj4dl")
+
+[node name="quit_btn" type="Button" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+theme = ExtResource("1_l7oia")
+theme_override_fonts/font = ExtResource("1_4ctsq")
+text = "Sair para menu"
+
+[connection signal="mouse_entered" from="BoxContainer/menu_holder/resume_btn" to="." method="_on_resume_btn_mouse_entered"]
+[connection signal="pressed" from="BoxContainer/menu_holder/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="mouse_entered" from="BoxContainer/menu_holder/quit_btn" to="." method="_on_quit_btn_mouse_entered"]
+[connection signal="pressed" from="BoxContainer/menu_holder/quit_btn" to="." method="_on_quit_btn_pressed"]
