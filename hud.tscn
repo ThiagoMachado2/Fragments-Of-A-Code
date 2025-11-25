@@ -9,6 +9,7 @@ script = ExtResource("1_64ctp")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
 
 [node name="HealthPip" parent="HBoxContainer" instance=ExtResource("2_8sq4i")]
 layout_mode = 2

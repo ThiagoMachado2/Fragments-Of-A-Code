@@ -19,8 +19,10 @@ func _physics_process(delta: float) -> void:
 		position += velocity * delta
 
 	# Destroi se sair da tela
-	if not get_viewport_rect().has_point(global_position):
-		queue_free()
+	#if not get_viewport_rect().has_point(global_position):
+	#	queue_free()
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free() # Destrói a bala APENAS quando ela realmente sair da câmera
 
 func _on_area_entered(area_entered: Area2D) -> void:
 	if has_hit:

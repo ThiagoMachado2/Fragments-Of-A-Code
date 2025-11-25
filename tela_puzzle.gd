@@ -26,37 +26,42 @@ func _ready() -> void:
 	# A tela de puzzle começa escondida.
 	hide()
 
-# !! ESTA É A FUNÇÃO MAIS IMPORTANTE !!
-# É ela que torna sua tela reutilizável.
-# A EstacaoUpgrade vai chamar esta função e passar os textos de cada puzzle.
+# Função para montar o puzzle com visual melhorado
 func mostrar_puzzle_codigo(instrucao, codigo_antes, opcoes, correta, codigo_depois, habilidade):
-	# 1. Guarda os dados do puzzle atual.
 	_resposta_correta = correta
 	_habilidade_a_desbloquear = habilidade
 	
-	# 2. Limpa o texto do puzzle anterior.
+	# Limpa o texto anterior
 	rich_text_label_codigo.clear()
 	
-	# 3. Monta o novo texto do código usando BBCode para formatar.
-	rich_text_label_codigo.append_text(instrucao + "\n\n")
+	# --- MONTAGEM DO TEXTO BONITO (BBCode) ---
+	
+	# 1. Título/Instrução (Amarelo e Centralizado)
+	rich_text_label_codigo.append_text("[center][color=#ffd700][b]" + instrucao + "[/b][/color][/center]\n\n")
+	
+	# Linha divisória
+	rich_text_label_codigo.append_text("[center]_________________________________[/center]\n\n")
+	
+	# 2. Início do Código (Ciano)
+	rich_text_label_codigo.append_text("[color=#4ec9b0]") 
 	rich_text_label_codigo.append_text(codigo_antes)
 	
-	# Adiciona um bloco destacado para o código faltante.
-	rich_text_label_codigo.push_color(Color.YELLOW) # Muda a cor para amarelo.
-	rich_text_label_codigo.append_text("\n    [ ... complete o código aqui ... ]\n")
-	rich_text_label_codigo.pop() # Volta para a cor padrão.
+	# 3. O Bloco Faltante (Vermelho Piscante)
+	rich_text_label_codigo.append_text("\n[pulse freq=1.0 color=#ffffff ease=-2.0][color=#ff4444]    [ ... INSIRA O CÓDIGO AQUI ... ][/color][/pulse]\n")
 	
+	# 4. Resto do código
 	rich_text_label_codigo.append_text(codigo_depois)
+	rich_text_label_codigo.append_text("[/color]") # Fecha a cor do código
 	
-	# 4. Configura os botões com as opções de código para este puzzle.
+	# --- CONFIGURAÇÃO DOS BOTÕES ---
 	for i in range(botoes_resposta.size()):
 		if i < opcoes.size():
 			botoes_resposta[i].text = opcoes[i]
 			botoes_resposta[i].show()
 		else:
-			botoes_resposta[i].hide() # Esconde botões que não são usados.
+			botoes_resposta[i].hide()
 
-	# 5. Mostra a tela de puzzle e pausa o jogo.
+	# Mostra a tela e pausa o jogo
 	show()
 	get_tree().paused = true
 

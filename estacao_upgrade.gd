@@ -67,6 +67,26 @@ func _unhandled_input(event):
 		)
 
 		# Desativa a estação para que não possa ser usada novamente.
-		$CollisionShape2D.set_deferred("disabled", true)
+		#$CollisionShape2D.set_deferred("disabled", true)
 		# Opcional: mude a cor do sprite para mostrar que já foi usado.
-		$Sprite2D.modulate = Color.GRAY
+		#$Sprite2D.modulate = Color.GRAY
+		
+func _ready():
+	# Encontra a tela de puzzle
+	var tela_puzzle = get_tree().root.get_node("Fase1/TelaPuzzle")
+	if tela_puzzle:
+		# Conecta o sinal de sucesso à nossa nova função
+		tela_puzzle.puzzle_resolvido.connect(_on_puzzle_resolvido)
+	
+# --- NOVA FUNÇÃO ---
+# Esta função é chamada sempre que QUALQUER puzzle é resolvido no jogo
+func _on_puzzle_resolvido(habilidade_desbloqueada):
+	# Verifica se a habilidade desbloqueada é a MINHA habilidade
+	if habilidade_desbloqueada == habilidade_para_desbloquear:
+		print("Estação " + habilidade_para_desbloquear + " desativada com sucesso!")
+		
+		# AGORA SIM, desativamos a estação permanentemente
+		$CollisionShape2D.set_deferred("disabled", true)
+		$Sprite2D.modulate = Color.GRAY # Deixa cinza para mostrar que já foi usada
+		
+		# Opcional: Tocar um som de "Power Up" aqui

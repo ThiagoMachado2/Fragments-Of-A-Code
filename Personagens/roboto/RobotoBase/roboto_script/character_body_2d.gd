@@ -8,7 +8,8 @@ signal health_updated(current_health)
 @onready var fire_point: Marker2D = $FirePoint
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -400.0
+@export var jump_force: float = -350.0        # Altura do pulo normal 
+@export var double_jump_force: float = -290.0 # Altura do pulo duplo
 const SHOOT_DURATION := 1
 const BULLET_SCENE = preload("res://Personagens/roboto/RobotoBase/bullet/bullet.tscn")
 const MUZZLE_SCENE = preload("res://Personagens/roboto/RobotoBase/bullet/muzzle.tscn")
@@ -70,10 +71,17 @@ func _physics_process(delta: float) -> void:
 	if _dash_timer > 0:
 		_dash_timer -= delta
 		velocity.x = _dash_direction * DASH_SPEED
-		velocity.y = 0	
+		velocity.y = 0
+		
+		# Deixa o sprite meio transparente (50% opacidade)
+		modulate.a = 0.5
+			
 		_play_if_not("dash")
 		move_and_slide()
 		return
+	else:
+		# Garante que o sprite volte ao normal (100% opacidade) quando o dash acabar
+		modulate.a = 1.0
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -86,7 +94,13 @@ func _physics_process(delta: float) -> void:
 		if habilidades["PuloDuplo"]:
 			max_jumps_allowed = MAX_JUMPS
 		if _jumps_made < max_jumps_allowed:
-			velocity.y = JUMP_VELOCITY
+			# Se for o primeiro pulo (jumps_made é 0), usa força normal
+			# Se for o segundo pulo (jumps_made é 1), usa força do pulo duplo
+			if _jumps_made == 0:
+				velocity.y = jump_force
+			else:
+				velocity.y = double_jump_force
+				
 			_jumps_made += 1
 
 	if Input.is_action_just_pressed("dash") and habilidades["Dash"]:
@@ -126,6 +140,10 @@ func _physics_process(delta: float) -> void:
 
 # --- (Função take_damage e _on_animation_finished permanecem iguais) ---
 func take_damage(amount):
+	# Se o dash estiver ativo (_dash_timer > 0), o jogador é invulnerável.
+	if _dash_timer > 0:
+		return
+		
 	if current_health <= 0 or is_hit:
 		return
 	is_hit = true

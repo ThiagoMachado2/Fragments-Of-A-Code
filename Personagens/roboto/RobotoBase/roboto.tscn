@@ -409,6 +409,7 @@ animations = [{
 texture_filter = 1
 texture_repeat = 1
 script = ExtResource("1_yaaxn")
+DASH_SPEED = 250.0
 
 [node name="Bullet" parent="." instance=ExtResource("10_0111i")]
 visible = false
