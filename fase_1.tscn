@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://bf7qst4nr5hip"]
+[gd_scene load_steps=127 format=4 uid="uid://bf7qst4nr5hip"]
 
 [ext_resource type="Script" uid="uid://dhe0kehd6mpau" path="res://fase_1.gd" id="1_tdyin"]
 [ext_resource type="Texture2D" uid="uid://btwun6kylonlh" path="res://tileset/industrial-zone/1 Tiles/IndustrialTile_57.png" id="1_wqmjn"]
@@ -57,6 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://o56vb2nv011a" path="res://hud.tscn" id="54_lscnr"]
 [ext_resource type="PackedScene" uid="uid://di28bwr3l3gao" path="res://smasher.tscn" id="55_tdyin"]
 [ext_resource type="PackedScene" uid="uid://dadv6u7xwy3rh" path="res://level_gate.tscn" id="55_vykae"]
+[ext_resource type="PackedScene" uid="uid://3yshae0y20ci" path="res://MenuPause/pause_menu.tscn" id="58_l4wuw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2f27"]
 texture = ExtResource("1_wqmjn")
@@ -2044,6 +2045,7 @@ collision_enabled = false
 
 [node name="RobotoBase" parent="." instance=ExtResource("48_pb2bu")]
 position = Vector2(16, 271)
+jump_force = -400.0
 fire_rate = 0.4
 
 [node name="Enemy3" parent="." instance=ExtResource("49_kxs55")]
@@ -2226,4 +2228,7 @@ codigo_depois_do_bloco = "
 [node name="HUD" parent="." instance=ExtResource("54_lscnr")]
 
 [node name="TelaPuzzle" parent="." instance=ExtResource("53_eqspm")]
+visible = false
+
+[node name="pause_menu" parent="." instance=ExtResource("58_l4wuw")]
 visible = false
