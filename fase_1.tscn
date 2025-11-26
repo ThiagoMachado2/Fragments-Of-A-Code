@@ -1894,7 +1894,7 @@ texture = ExtResource("2_rwqh0")
 sources/0 = SubResource("TileSetAtlasSource_es33p")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_es33p"]
-size = Vector2(37.5, 943)
+size = Vector2(38.5, 1003.5)
 
 [node name="Fase1" type="Node2D"]
 texture_filter = 1
@@ -2137,11 +2137,11 @@ position = Vector2(1437, 72)
 [node name="ParedesLimite" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedesLimite"]
-position = Vector2(-35, -42)
+position = Vector2(-35, -37.75)
 shape = SubResource("RectangleShape2D_es33p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ParedesLimite"]
-position = Vector2(4438.75, -5.5)
+position = Vector2(4438.25, -31.5)
 shape = SubResource("RectangleShape2D_es33p")
 
 [node name="EstacaoUpgrade" parent="." instance=ExtResource("52_sxugk")]
