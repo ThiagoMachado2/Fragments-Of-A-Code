@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf5nsfxdhi1ae"]
+[gd_scene load_steps=6 format=3 uid="uid://cf5nsfxdhi1ae"]
 
-[ext_resource type="Texture2D" uid="uid://b6mnhjt82awdb" path="res://tileset/industrial-zone/2 Background/1.png" id="1_2b5pw"]
+[ext_resource type="Texture2D" uid="uid://2wwmav6jhhgw" path="res://tileset/industrial-zone/2 Background/1.png" id="1_2b5pw"]
 [ext_resource type="Script" uid="uid://ctsa4pchw4wqg" path="res://MainMenu_parallax/parallax_background.gd" id="1_8h4ii"]
-[ext_resource type="Texture2D" uid="uid://cmw5qs4gud48l" path="res://tileset/industrial-zone/2 Background/2.png" id="2_8h4ii"]
-[ext_resource type="Texture2D" uid="uid://djwpxm8j4wwqt" path="res://tileset/industrial-zone/2 Background/3.png" id="3_rl5wi"]
-[ext_resource type="Texture2D" uid="uid://2w04lsi0wbjv" path="res://tileset/industrial-zone/2 Background/4.png" id="4_k3ubo"]
-[ext_resource type="Texture2D" uid="uid://daeivn2juebsp" path="res://tileset/5.png" id="5_u108h"]
+[ext_resource type="Texture2D" uid="uid://d2xdmu3vvpek0" path="res://tileset/industrial-zone/2 Background/2.png" id="2_8h4ii"]
+[ext_resource type="Texture2D" uid="uid://dgx1j220jggmx" path="res://tileset/industrial-zone/2 Background/3.png" id="3_rl5wi"]
+[ext_resource type="Texture2D" uid="uid://dxwlcx2m4mi1y" path="res://tileset/industrial-zone/2 Background/4.png" id="4_k3ubo"]
 
 [node name="MainMenu_parallax" type="Node2D"]
 
@@ -53,5 +52,4 @@ motion_mirroring = Vector2(576, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/fabrica_parallax_3"]
 texture_filter = 1
-texture = ExtResource("5_u108h")
 centered = false

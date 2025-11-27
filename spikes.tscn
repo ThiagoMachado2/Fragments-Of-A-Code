@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfayr0s8s1eyj"]
 
-[ext_resource type="Script" uid="uid://d1hnfe0j3tgin" path="res://spikes.gd" id="1_nrdsm"]
+[ext_resource type="Script" uid="uid://bhvq6gis6666b" path="res://spikes.gd" id="1_nrdsm"]
 [ext_resource type="Texture2D" uid="uid://n1lo2lpdplag" path="res://sprites/spikes/16-bit-spike-Sheet.png" id="2_8fhau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fhau"]

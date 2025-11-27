@@ -29,14 +29,6 @@ func _on_new_game_btn_pressed() -> void:
 	_on_button_pressed()
 	get_tree().change_scene_to_file("res://StoryScreen/story_screen.tscn")
 
-func _on_carregar_game_btn_pressed() -> void:
-	_on_button_pressed()
-	# get_tree().change_scene_to_file("res://caminho/da_sua_cena.tscn")
-
-func _on_options_btn_pressed() -> void:
-	_on_button_pressed()
-	# get_tree().change_scene_to_file("res://caminho/da_sua_cena.tscn")
-
 func _on_credits_btn_pressed() -> void:
 	_on_button_pressed()
 	# get_tree().change_scene_to_file("res://caminho/da_sua_cena.tscn")

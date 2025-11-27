@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://43ry7jkk3qqp" path="res://scripts/start_screen.gd" id="1_bld0t"]
 [ext_resource type="PackedScene" uid="uid://cf5nsfxdhi1ae" path="res://MainMenu_parallax/main_menu_parallax.tscn" id="1_ufvwy"]
-[ext_resource type="Texture2D" uid="uid://do3imnt1f1f57" path="res://GameLogo/F.O.A.C.png" id="2_3rwc5"]
-[ext_resource type="FontFile" uid="uid://cyo34jd4gxqn6" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_7l7kc"]
+[ext_resource type="Texture2D" uid="uid://c5uhw0pq2bbro" path="res://GameLogo/F.O.A.C.png" id="2_3rwc5"]
+[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_7l7kc"]
 [ext_resource type="AudioStream" uid="uid://be0trotv7suwt" path="res://ost/03_SITF-Tranquillity.ogg" id="2_jh1pr"]
 [ext_resource type="Theme" uid="uid://bmyffoww3jo33" path="res://StartScreen/default_btn.tres" id="3_3rwc5"]
 [ext_resource type="AudioStream" uid="uid://2g8577fydd2c" path="res://ost/vgmenuselect.ogg" id="4_a6xhh"]
@@ -67,29 +67,7 @@ theme = ExtResource("3_3rwc5")
 theme_override_fonts/font = ExtResource("2_7l7kc")
 text = "Novo jogo"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
-
-[node name="CarregarGame_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
-texture_filter = 1
-layout_mode = 2
-theme = ExtResource("3_3rwc5")
-theme_override_fonts/font = ExtResource("2_7l7kc")
-text = "Carregar"
-
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
-
-[node name="Options_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" groups=["menu_buttons"]]
-texture_filter = 1
-layout_mode = 2
-theme = ExtResource("3_3rwc5")
-theme_override_fonts/font = ExtResource("2_7l7kc")
-text = "Opcoes"
-
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3rwc5")
 
@@ -112,7 +90,5 @@ theme_override_fonts/font = ExtResource("2_7l7kc")
 text = "Sair"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/NewGame_btn" to="." method="_on_new_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/CarregarGame_btn" to="." method="_on_carregar_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

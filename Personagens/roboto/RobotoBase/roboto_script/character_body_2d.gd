@@ -1,18 +1,17 @@
-# RobotoBase.gd (Final: Max Health = 4, com Dano por Contato)
 extends CharacterBody2D
 
 signal health_updated(current_health)
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var fire_point: Marker2D = $FirePoint
-@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound 
-@onready var damage_sound: AudioStreamPlayer2D = $DamageSound 
-@onready var death_sound: AudioStreamPlayer2D = $DeathSound 
+@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+@onready var damage_sound: AudioStreamPlayer2D = $DamageSound
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
 const SPEED = 150.0
-const CONTACT_DAMAGE = 1 # NOVO: Dano que o inimigo causa ao encostar
-@export var jump_force: float = -350.0 	 	 
+const CONTACT_DAMAGE = 1
+@export var jump_force: float = -350.0 	 	
 @export var double_jump_force: float = -290.0
 const SHOOT_DURATION := 0.1
 const BULLET_SCENE = preload("res://Personagens/roboto/RobotoBase/bullet/bullet.tscn")
@@ -21,7 +20,7 @@ const MUZZLE_SCENE = preload("res://Personagens/roboto/RobotoBase/bullet/muzzle.
 @export var fire_rate: float = 0.3
 
 # --- Variáveis de HP ---
-@export var max_health: int = 4 
+@export var max_health: int = 4
 var current_health: int
 
 # --- Variáveis de Habilidade ---
@@ -35,7 +34,7 @@ var habilidades = {
 }
 
 # --- Variáveis de Limite de Queda ---
-@export var death_fall_y: float = 600.0 
+@export var death_fall_y: float = 600.0
 
 
 var _jumps_made = 0
@@ -155,16 +154,26 @@ func _physics_process(delta: float) -> void:
 	was_on_floor = is_on_floor()
 	move_and_slide()
 	
-	# --- DETECÇÃO DE DANO POR CONTATO (NOVO) ---
+	# ------------------------------------------------------------------------
+	# --- DETECÇÃO DE DANO POR CONTATO (AGORA COM DEADLY ADICIONADO) ---
+	# ------------------------------------------------------------------------
 	if not is_dead and not is_hit and _dash_timer <= 0:
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
 			
-			# Verifica se o objeto colidido está no grupo "enemy"
-			if is_instance_valid(collider) and collider.is_in_group("enemy"):
+			if not is_instance_valid(collider):
+				continue
+			
+			# VERIFICA SE O OBJETO É UM ESPINHO (Grupo "deadly")
+			if collider.is_in_group("deadly"):
+				take_damage(999) # Dano fatal
+				break
+				
+			# Verifica se o objeto colidido é um inimigo (Grupo "enemy")
+			elif collider.is_in_group("enemy"):
 				take_damage(CONTACT_DAMAGE)
-				break 
+				break
 
 
 func take_damage(amount):
@@ -182,7 +191,7 @@ func take_damage(amount):
 	print("Roboto levou dano! Vida restante: ", current_health)
 	
 	if current_health <= 0:
-		_play_death_sound() 
+		_play_death_sound()
 		
 		is_dead = true
 		anim.play("death")
@@ -206,7 +215,7 @@ func _on_animation_finished():
 		is_hit = false
 		
 		if not is_on_floor():
-			velocity.y = 0 
+			velocity.y = 0
 			
 		anim.play("idle")
 	elif anim.animation == "death":
@@ -260,10 +269,10 @@ func _spawn_bullet() -> void:
 	var bullet = BULLET_SCENE.instantiate()
 	var direction = -1 if anim.flip_h else 1
 	
-	bullet.global_position = fire_point.global_position 
+	bullet.global_position = fire_point.global_position
 	
-	var bullet_script_speed = bullet.get("speed") 
-	bullet.set("velocity", Vector2(direction * bullet_script_speed, 0)) 
+	var bullet_script_speed = bullet.get("speed")
+	bullet.set("velocity", Vector2(direction * bullet_script_speed, 0))
 	
 	get_tree().current_scene.add_child(bullet)
 

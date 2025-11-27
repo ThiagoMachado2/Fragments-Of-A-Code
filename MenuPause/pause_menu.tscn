@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://3yshae0y20ci"]
 
-[ext_resource type="FontFile" uid="uid://3d37q633sk7l" path="res://fontes/CyberpunkCraftpixPixel.otf" id="1_4ctsq"]
-[ext_resource type="Texture2D" uid="uid://dofrdmnbu4vcr" path="res://MenuPause/PauseLogo.png" id="1_d03xs"]
+[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="1_4ctsq"]
+[ext_resource type="Texture2D" uid="uid://topj6pvnb1kl" path="res://MenuPause/PauseLogo.png" id="1_d03xs"]
 [ext_resource type="Theme" uid="uid://oik810sixw0l" path="res://MenuPause/pause_menu.tres" id="1_l7oia"]
-[ext_resource type="Script" uid="uid://buu7pit1ikxs7" path="res://MenuPause/pause_menu.gd" id="1_vj4dl"]
+[ext_resource type="Script" uid="uid://c37ijx7fbg5xj" path="res://MenuPause/pause_menu.gd" id="1_vj4dl"]
 [ext_resource type="AudioStream" uid="uid://2g8577fydd2c" path="res://ost/vgmenuselect.ogg" id="2_qowx4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d03xs"]
@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.1882353)
+color = Color(0, 0, 0, 0.188235)
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 anchors_preset = 8
@@ -65,6 +65,16 @@ shortcut = SubResource("Shortcut_qowx4")
 text = "Continue
 "
 
+[node name="HSeparator3" type="HSeparator" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vj4dl")
+
+[node name="controls_btn" type="Button" parent="BoxContainer/menu_holder"]
+layout_mode = 2
+theme = ExtResource("1_l7oia")
+theme_override_fonts/font = ExtResource("1_4ctsq")
+text = "CONTROLES"
+
 [node name="HSeparator2" type="HSeparator" parent="BoxContainer/menu_holder"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vj4dl")
@@ -77,5 +87,6 @@ text = "Sair para menu"
 
 [connection signal="mouse_entered" from="BoxContainer/menu_holder/resume_btn" to="." method="_on_resume_btn_mouse_entered"]
 [connection signal="pressed" from="BoxContainer/menu_holder/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="BoxContainer/menu_holder/controls_btn" to="." method="_on_controls_btn_pressed"]
 [connection signal="mouse_entered" from="BoxContainer/menu_holder/quit_btn" to="." method="_on_quit_btn_mouse_entered"]
 [connection signal="pressed" from="BoxContainer/menu_holder/quit_btn" to="." method="_on_quit_btn_pressed"]

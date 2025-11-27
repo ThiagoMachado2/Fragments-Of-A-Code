@@ -1,16 +1,18 @@
-# Enemy1.gd (Versão Patrulha Voadora com Lógica Corrigida)
 extends CharacterBody2D
 
-# Carrega a cena do projétil
 const ENEMY_BULLET_SCENE = preload("res://enemy_1_bullet.tscn")
 
-enum State { IDLE, PATROL, ATTACK, RETURNING } 
+enum State {IDLE, PATROL, ATTACK, RETURNING, DEATH}
 var current_state = State.IDLE
 
 var health = 3
-# Começa andando para a ESQUERDA (padrão do sprite) ---
-var patrol_speed = -30.0 
+var patrol_speed = -30.0
 var player_node = null
+
+# --- VARIÁVEIS DO HIT FLASH ---
+var damage_tween: Tween = null
+const FLASH_COLOR = Color(1.0, 0.2, 0.2, 1.0)
+# ------------------------------
 
 @export_category("Patrol Behavior")
 @export var patrol_distance: float = 100.0
@@ -19,7 +21,6 @@ var _patrol_start_position: Vector2
 var _patrol_limit_left: float
 var _patrol_limit_right: float
 
-# Referências para os nós filhos
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_effect: AnimatedSprite2D = $AttackEffect
 @onready var flying_effect: AnimatedSprite2D = $FlyingEffect
@@ -28,6 +29,9 @@ var _patrol_limit_right: float
 @onready var fire_point_default_x = fire_point.position.x
 @onready var aggro_area: Area2D = $AggroArea
 @onready var wall_ray: RayCast2D = $WallRay
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+# 🔊 NOVA REFERÊNCIA: Certifique-se que o nome do nó está correto
+@onready var explosion_sound: AudioStreamPlayer = $ExplosionSound 
 
 func _ready():
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
@@ -40,28 +44,27 @@ func _ready():
 	_patrol_limit_left = global_position.x - patrol_distance
 	_patrol_limit_right = global_position.x + patrol_distance
 	
-	# --- CORREÇÃO: Garante que o raio comece apontando para a esquerda ---
 	wall_ray.target_position.x = -abs(wall_ray.target_position.x)
 	
-	set_state(State.PATROL) # Começa patrulhando
+	set_state(State.PATROL)
 
 func _physics_process(delta):
-	# Este inimigo voa, então NÃO aplicamos gravidade
-	# velocity.y += get_gravity() * delta
-
 	match current_state:
 		State.PATROL:
 			patrol_state(delta)
 		State.ATTACK:
 			attack_state(delta)
-		State.IDLE:
-			pass
 		State.RETURNING:
 			returning_state(delta)
+		# IDLE e DEATH impedem a lógica de movimento
+		State.IDLE, State.DEATH: 
+			pass
 			
 	move_and_slide()
 
-# --- LÓGICA DOS ESTADOS ---
+# ----------------------------------------------------------------------
+## 🗺️ Lógica dos Estados (Sem Alteração)
+# ----------------------------------------------------------------------
 
 func patrol_state(delta):
 	anim_sprite.play("idle")
@@ -83,14 +86,11 @@ func attack_state(delta):
 	flying_effect.visible = true
 	anim_sprite.play("aiming")
 	
-	# --- CORREÇÃO: Lógica de virar invertida ---
 	if is_instance_valid(player_node):
 		if player_node.global_position.x < global_position.x:
-			# Jogador está à ESQUERDA (padrão)
 			anim_sprite.flip_h = false
 			fire_point.position.x = fire_point_default_x
 		else:
-			# Jogador está à DIREITA (virado)
 			anim_sprite.flip_h = true
 			fire_point.position.x = -fire_point_default_x
 
@@ -102,11 +102,10 @@ func returning_state(delta):
 	var direction_to_home = (_patrol_start_position - global_position).normalized()
 	
 	if global_position.distance_to(_patrol_start_position) < 5:
-		# --- CORREÇÃO: Reseta para o padrão ESQUERDA ---
 		velocity.x = 0
-		anim_sprite.flip_h = false # Padrão (Esquerda)
-		patrol_speed = -abs(patrol_speed) # Padrão (Esquerda)
-		wall_ray.target_position.x = -abs(wall_ray.target_position.x) # Padrão (Esquerda)
+		anim_sprite.flip_h = false
+		patrol_speed = -abs(patrol_speed)
+		wall_ray.target_position.x = -abs(wall_ray.target_position.x)
 		fire_point.position.x = fire_point_default_x
 		
 		set_state(State.PATROL)
@@ -114,10 +113,9 @@ func returning_state(delta):
 
 	velocity.x = direction_to_home.x * abs(patrol_speed)
 	
-	# --- CORREÇÃO: Lógica de virar invertida ---
-	if velocity.x > 0: # Indo para a DIREITA
+	if velocity.x > 0:
 		anim_sprite.flip_h = true
-	else: # Indo para a ESQUERDA
+	else:
 		anim_sprite.flip_h = false
 			
 func set_state(new_state):
@@ -133,7 +131,7 @@ func set_state(new_state):
 		State.ATTACK:
 			attack_timer.start()
 		State.IDLE:
-			velocity.x = 0
+			velocity = Vector2.ZERO
 			flying_effect.visible = false
 			attack_timer.stop()
 		State.RETURNING:
@@ -141,18 +139,23 @@ func set_state(new_state):
 			attack_timer.stop()
 			flying_effect.play("fly")
 			flying_effect.visible = true
+		State.DEATH:
+			velocity = Vector2.ZERO
+			flying_effect.visible = false
+			attack_timer.stop()
 
-# --- FUNÇÕES DE AÇÃO ---
+# ----------------------------------------------------------------------
+## 🔫 Funções de Ação (Sem Alteração)
+# ----------------------------------------------------------------------
 
 func turn_around():
 	patrol_speed *= -1.0
 	anim_sprite.flip_h = not anim_sprite.flip_h
 	wall_ray.target_position.x *= -1.0
 	
-	# --- CORREÇÃO: Lógica do ponto de tiro invertida ---
-	if anim_sprite.flip_h: # Se agora está virado para a DIREITA
+	if anim_sprite.flip_h:
 		fire_point.position.x = -fire_point_default_x
-	else: # Se agora está virado para a ESQUERDA (padrão)
+	else:
 		fire_point.position.x = fire_point_default_x
 
 func shoot():
@@ -160,20 +163,18 @@ func shoot():
 		return
 
 	anim_sprite.play("attack")
-	#attack_effect.play("fire")
 	
 	var bullet = ENEMY_BULLET_SCENE.instantiate()
 	bullet.global_position = fire_point.global_position
 	
-	# --- CORREÇÃO: Lógica do tiro invertida ---
-	if anim_sprite.flip_h: # flip_h = true é DIREITA
+	if anim_sprite.flip_h:
 		bullet.direcao = Vector2.RIGHT
-	else: # flip_h = false é ESQUERDA (padrão)
+	else:
 		bullet.direcao = Vector2.LEFT
 	
 	get_parent().add_child(bullet)
 
-# --- SINAIS ---
+# --- SINAIS (Sem Alteração) ---
 
 func _on_attack_timer_timeout():
 	if current_state == State.ATTACK:
@@ -181,16 +182,67 @@ func _on_attack_timer_timeout():
 		attack_timer.start()
 
 func _on_aggro_area_body_entered(body):
+	if current_state == State.DEATH:
+		return
+		
 	if body.name == "RobotoBase":
 		player_node = body
 		set_state(State.ATTACK)
 
 func _on_aggro_area_body_exited(body):
+	if current_state == State.DEATH:
+		return
+		
 	if body.name == "RobotoBase":
 		set_state(State.RETURNING)
 
-# --- VIDA E DANO ---
+# ----------------------------------------------------------------------
+## ❤️ Vida e Morte (Com Som)
+# ----------------------------------------------------------------------
+
 func take_damage(amount):
-	health -= amount
 	if health <= 0:
-		queue_free()
+		return 
+
+	health -= amount
+	
+	# --- Lógica do Hit Flash ---
+	if damage_tween:
+		damage_tween.kill()
+		
+	anim_sprite.modulate = Color.WHITE
+	
+	damage_tween = create_tween()
+	
+	damage_tween.tween_property(anim_sprite, "modulate", FLASH_COLOR, 0.05)
+	damage_tween.tween_property(anim_sprite, "modulate", Color.WHITE, 0.2).set_delay(0.05)
+	# ---------------------------
+	
+	if health <= 0:
+		_die()
+		
+func _die():
+	# 1. Muda o estado para DEATH, parando o movimento
+	set_state(State.DEATH) 
+	
+	# 2. Desativa a colisão
+	if is_instance_valid(collision_shape):
+		collision_shape.set_deferred("disabled", true)
+	
+	# 🔊 TOCA O SOM DA EXPLOSÃO
+	explosion_sound.play() 
+	
+	# 3. Toca a animação de morte
+	if anim_sprite.sprite_frames.has_animation("death"):
+		anim_sprite.play("death")
+		
+		# 4. Espera a animação de morte terminar
+		await anim_sprite.animation_finished
+		
+	else:
+		# Fallback se a animação 'death' não existir
+		print("Aviso: Animação 'death' não encontrada. Usando Timer para remover.")
+		await get_tree().create_timer(0.5).timeout 
+		
+	# 5. Remove o inimigo
+	queue_free()

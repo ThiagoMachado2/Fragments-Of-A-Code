@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2lcr4m0ddnkv"]
+
+[ext_resource type="Texture2D" uid="uid://edb7kdfx070c" path="res://MenuPause/Gemini_Generated_Image_8z6ies8z6ies8z6i-removebg-preview.png" id="1_tw45y"]
+[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_5ufnh"]
+[ext_resource type="PackedScene" uid="uid://broxro4befica" path="res://back_button.tscn" id="3_5ufnh"]
+
+[node name="ControlsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_tw45y")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5ufnh")
+text = "AWSD: MOVIMENTAÇÃO
+J: ATIRAR
+W: PULO
+SHIFT: DASH"
+horizontal_alignment = 1
+
+[node name="BackButton" parent="VBoxContainer/Label" instance=ExtResource("3_5ufnh")]
+layout_mode = 1
+offset_left = -27.0
+offset_top = -160.5
+offset_right = 66.0
+offset_bottom = -130.5

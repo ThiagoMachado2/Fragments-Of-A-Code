@@ -1,9 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://betm37bvrmtx3"]
+[gd_scene load_steps=38 format=3 uid="uid://betm37bvrmtx3"]
 
 [ext_resource type="Script" uid="uid://o2q5uul2t28r" path="res://enemy_2.gd" id="1_hv4bk"]
 [ext_resource type="Texture2D" uid="uid://dgv465fhufih" path="res://sprites/antagonistas/enemy2/enemy2attack[32height48wide].png" id="1_mvvu1"]
 [ext_resource type="Texture2D" uid="uid://dkwxqrn6tky2q" path="res://sprites/antagonistas/enemy2/enemy2walk[32height48wide].png" id="2_hv4bk"]
+[ext_resource type="Texture2D" uid="uid://dfol5cqafimcn" path="res://sprites/antagonistas/explosion/explosion.png" id="3_05s6o"]
 [ext_resource type="Texture2D" uid="uid://v2py1c6s51ij" path="res://sprites/antagonistas/enemy2/enemy2attackeffect[32height48wide].png" id="3_qr8xe"]
+[ext_resource type="AudioStream" uid="uid://ug5trp4r8eim" path="res://ost/explosion.ogg" id="6_anlw3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05s6o"]
 atlas = ExtResource("1_mvvu1")
@@ -24,6 +26,30 @@ region = Rect2(144, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nii7r"]
 atlas = ExtResource("1_mvvu1")
 region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa5th"]
+atlas = ExtResource("3_05s6o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwcgd"]
+atlas = ExtResource("3_05s6o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p51wx"]
+atlas = ExtResource("3_05s6o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mnrp"]
+atlas = ExtResource("3_05s6o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sb1d"]
+atlas = ExtResource("3_05s6o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lldw0"]
+atlas = ExtResource("3_05s6o")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hv4bk"]
 atlas = ExtResource("2_hv4bk")
@@ -69,6 +95,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa5th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwcgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p51wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mnrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sb1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lldw0")
+}],
+"loop": false,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -190,7 +239,7 @@ script = ExtResource("1_hv4bk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fa5th")
-animation = &"idle"
+animation = &"death"
 
 [node name="AttackEffect" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -231,3 +280,6 @@ visible = false
 texture_filter = 1
 position = Vector2(-20, 6.8)
 target_position = Vector2(0, 10)
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_anlw3")

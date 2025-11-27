@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcgxfb56p5111"]
+[gd_scene load_steps=36 format=3 uid="uid://dcgxfb56p5111"]
 
 [ext_resource type="Texture2D" uid="uid://ix7csii7c3lf" path="res://sprites/antagonistas/enemy1/enemy1[32height32wide].png" id="1_mbxyh"]
 [ext_resource type="Script" uid="uid://cnjaqbhkai77m" path="res://enemy_1.gd" id="1_pjquw"]
 [ext_resource type="Texture2D" uid="uid://dk635cffco0ci" path="res://sprites/antagonistas/enemy1/enemy1_flyingeffect[32height32wide].png" id="3_ovk8a"]
 [ext_resource type="Texture2D" uid="uid://c5avk2yvtfjmk" path="res://sprites/antagonistas/enemy1/enemy1_attack_effect[32height32wide].png" id="4_gqj32"]
+[ext_resource type="Texture2D" uid="uid://dfol5cqafimcn" path="res://sprites/antagonistas/explosion/explosion.png" id="5_gqj32"]
+[ext_resource type="AudioStream" uid="uid://ug5trp4r8eim" path="res://ost/explosion.ogg" id="6_wswjf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ovk8a"]
 atlas = ExtResource("1_mbxyh")
@@ -12,6 +14,30 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbxyh"]
 atlas = ExtResource("1_mbxyh")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk3b2"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob43x"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mthds"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7756f"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtju5"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shnph"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjquw"]
 atlas = ExtResource("1_mbxyh")
@@ -41,6 +67,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk3b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob43x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mthds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7756f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtju5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shnph")
+}],
+"loop": false,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -137,6 +186,42 @@ height = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovk8a"]
 radius = 65.0077
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u0vs"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5inj"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nxkp"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4hj2"]
+atlas = ExtResource("5_gqj32")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gk3b2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u0vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5inj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nxkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4hj2")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}]
+
 [node name="enemy1" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
 script = ExtResource("1_pjquw")
@@ -144,7 +229,7 @@ script = ExtResource("1_pjquw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6rg8l")
-animation = &"aiming"
+animation = &"death"
 flip_h = true
 
 [node name="FlyingEffect" type="AnimatedSprite2D" parent="."]
@@ -178,3 +263,12 @@ shape = SubResource("CircleShape2D_ovk8a")
 [node name="WallRay" type="RayCast2D" parent="."]
 visible = false
 target_position = Vector2(20, 0)
+
+[node name="ExplosionEffect" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_gk3b2")
+animation = &"death"
+frame_progress = 0.83297
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_wswjf")
