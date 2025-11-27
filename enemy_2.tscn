@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://betm37bvrmtx3"]
 
 [ext_resource type="Script" uid="uid://o2q5uul2t28r" path="res://enemy_2.gd" id="1_hv4bk"]
-[ext_resource type="Texture2D" uid="uid://dunhctodj1lnc" path="res://sprites/antagonistas/enemy2/enemy2attack[32height48wide].png" id="1_mvvu1"]
-[ext_resource type="Texture2D" uid="uid://crij8r8464i05" path="res://sprites/antagonistas/enemy2/enemy2walk[32height48wide].png" id="2_hv4bk"]
-[ext_resource type="Texture2D" uid="uid://cr7yid0yvx4qr" path="res://sprites/antagonistas/enemy2/enemy2attackeffect[32height48wide].png" id="3_qr8xe"]
+[ext_resource type="Texture2D" uid="uid://dgv465fhufih" path="res://sprites/antagonistas/enemy2/enemy2attack[32height48wide].png" id="1_mvvu1"]
+[ext_resource type="Texture2D" uid="uid://dkwxqrn6tky2q" path="res://sprites/antagonistas/enemy2/enemy2walk[32height48wide].png" id="2_hv4bk"]
+[ext_resource type="Texture2D" uid="uid://v2py1c6s51ij" path="res://sprites/antagonistas/enemy2/enemy2attackeffect[32height48wide].png" id="3_qr8xe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05s6o"]
 atlas = ExtResource("1_mvvu1")
@@ -182,9 +182,9 @@ animations = [{
 size = Vector2(29.5, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr8xe"]
-radius = 62.008064
+radius = 62.0081
 
-[node name="Enemy2" type="CharacterBody2D"]
+[node name="Enemy2" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_hv4bk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -198,7 +198,7 @@ position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_l80rf")
 animation = &"fire"
 frame = 1
-frame_progress = 0.5937125
+frame_progress = 0.593713
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -11,10 +11,12 @@ signal puzzle_resolvido(habilidade_desbloqueada)
 @onready var botoes_resposta = [$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta1,
 								$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta2,
 								$ColorRect/Panel/VBoxContainer/HBoxContainer/BotaoResposta3]
-
+@onready var error_sound: AudioStreamPlayer = $ErrorSound
+@onready var success_sound: AudioStreamPlayer = $SuccessSound # NOVO
 # Variáveis internas para guardar a informação do puzzle atual.
 var _habilidade_a_desbloquear = ""
 var _resposta_correta = ""
+var _dano_por_erro = 1 
 
 # Função que roda uma vez quando a cena é iniciada.
 func _ready() -> void:
@@ -47,7 +49,7 @@ func mostrar_puzzle_codigo(instrucao, codigo_antes, opcoes, correta, codigo_depo
 	rich_text_label_codigo.append_text(codigo_antes)
 	
 	# 3. O Bloco Faltante (Vermelho Piscante)
-	rich_text_label_codigo.append_text("\n[pulse freq=1.0 color=#ffffff ease=-2.0][color=#ff4444]    [ ... INSIRA O CÓDIGO AQUI ... ][/color][/pulse]\n")
+	rich_text_label_codigo.append_text("\n[pulse freq=1.0 color=#ffffff ease=-2.0][color=#ff4444]    [ ... INSIRA O CÓDIGO AQUI ... ][/color][/pulse]\n")
 	
 	# 4. Resto do código
 	rich_text_label_codigo.append_text(codigo_depois)
@@ -68,15 +70,31 @@ func mostrar_puzzle_codigo(instrucao, codigo_antes, opcoes, correta, codigo_depo
 # Esta função é chamada QUANDO QUALQUER um dos botões é pressionado.
 func _on_botao_resposta_pressed(botao_pressionado):
 	print("Um botão foi pressionado! O texto é: '", botao_pressionado.text, "'")
+	
+	# --- Encontrar o jogador ---
+	var player_node = get_tree().root.get_node("Fase1/RobotoBase") 
+	
 	# Verifica se o texto do botão pressionado é o mesmo da resposta correta.
 	if botao_pressionado.text == _resposta_correta:
 		# Acertou! Emite o sinal para o Roboto receber a habilidade.
 		puzzle_resolvido.emit(_habilidade_a_desbloquear)
 		print("Código correto! Habilidade '" + _habilidade_a_desbloquear + "' desbloqueada!")
+		
+		# --- AÇÃO DE SUCESSO (NOVO) ---
+		if is_instance_valid(success_sound) and success_sound.stream != null:
+			success_sound.play()
+		# -----------------------------
 	else:
-		# Errou! Apenas imprime uma mensagem por enquanto.
+		# Errou! Apenas imprime a mensagem e aplica a penalidade.
 		print("Bloco de código incorreto! Tente novamente.")
-	
+		
+		# --- AÇÕES DE PENALIDADE ---
+		error_sound.play() 
+		
+		if is_instance_valid(player_node):
+			# Aplica dano ao personagem
+			player_node.take_damage(_dano_por_erro)
+			
 	# Esconde a tela de puzzle e despausa o jogo, não importa se acertou ou errou.
 	hide()
 	get_tree().paused = false

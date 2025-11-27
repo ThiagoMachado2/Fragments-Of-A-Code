@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://dcgxfb56p5111"]
 
-[ext_resource type="Texture2D" uid="uid://px00vojaifbi" path="res://sprites/antagonistas/enemy1/enemy1[32height32wide].png" id="1_mbxyh"]
+[ext_resource type="Texture2D" uid="uid://ix7csii7c3lf" path="res://sprites/antagonistas/enemy1/enemy1[32height32wide].png" id="1_mbxyh"]
 [ext_resource type="Script" uid="uid://cnjaqbhkai77m" path="res://enemy_1.gd" id="1_pjquw"]
-[ext_resource type="Texture2D" uid="uid://bj5f21e10ookq" path="res://sprites/antagonistas/enemy1/enemy1_flyingeffect[32height32wide].png" id="3_ovk8a"]
-[ext_resource type="Texture2D" uid="uid://d0iatwwq8okve" path="res://sprites/antagonistas/enemy1/enemy1_attack_effect[32height32wide].png" id="4_gqj32"]
+[ext_resource type="Texture2D" uid="uid://dk635cffco0ci" path="res://sprites/antagonistas/enemy1/enemy1_flyingeffect[32height32wide].png" id="3_ovk8a"]
+[ext_resource type="Texture2D" uid="uid://c5avk2yvtfjmk" path="res://sprites/antagonistas/enemy1/enemy1_attack_effect[32height32wide].png" id="4_gqj32"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ovk8a"]
 atlas = ExtResource("1_mbxyh")
@@ -135,9 +135,9 @@ radius = 7.0
 height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovk8a"]
-radius = 65.00769
+radius = 65.0077
 
-[node name="enemy1" type="CharacterBody2D"]
+[node name="enemy1" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
 script = ExtResource("1_pjquw")
 

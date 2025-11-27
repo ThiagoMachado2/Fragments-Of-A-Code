@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfayr0s8s1eyj"]
+
+[ext_resource type="Script" uid="uid://d1hnfe0j3tgin" path="res://spikes.gd" id="1_nrdsm"]
+[ext_resource type="Texture2D" uid="uid://n1lo2lpdplag" path="res://sprites/spikes/16-bit-spike-Sheet.png" id="2_8fhau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fhau"]
+size = Vector2(4, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrdsm"]
+size = Vector2(2, 1)
+
+[node name="Spikes" type="StaticBody2D" groups=["deadly"]]
+script = ExtResource("1_nrdsm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_8fhau")
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_nrdsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8fhau")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

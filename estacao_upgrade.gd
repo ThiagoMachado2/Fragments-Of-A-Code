@@ -18,7 +18,7 @@ extends Area2D
 @export var opcoes_de_codigo: Array[String] = [
 	"    velocidade.x = FORCA_DASH",
 	"    velocidade.y = FORCA_PULO",
-    "    ativar_escudo()"
+	"    ativar_escudo()"
 ]
 
 # O texto exato da opção correta.

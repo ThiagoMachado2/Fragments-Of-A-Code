@@ -1,19 +1,23 @@
-[gd_scene load_steps=64 format=3 uid="uid://bv20hhouqt68r"]
+[gd_scene load_steps=68 format=3 uid="uid://bv20hhouqt68r"]
 
 [ext_resource type="Script" uid="uid://c46i47hnh4ey4" path="res://Personagens/roboto/RobotoBase/roboto_script/character_body_2d.gd" id="1_yaaxn"]
-[ext_resource type="Texture2D" uid="uid://bukjayeh332ap" path="res://sprites/roboto/roboto_base/robo1/robo1fall-Sheet[32height32wide].png" id="2_8vomm"]
-[ext_resource type="Texture2D" uid="uid://0t7bj4w2vf0c" path="res://sprites/roboto/roboto_base/robo1/robotIdlle.png" id="2_bujj7"]
+[ext_resource type="Texture2D" uid="uid://bmn7je3bujppr" path="res://sprites/roboto/roboto_base/robo1/robo1fall-Sheet[32height32wide].png" id="2_8vomm"]
+[ext_resource type="Texture2D" uid="uid://3mwkq3m1jlqm" path="res://sprites/roboto/roboto_base/robo1/robotIdlle.png" id="2_bujj7"]
 [ext_resource type="PackedScene" uid="uid://thocxytykq14" path="res://Personagens/roboto/RobotoBase/bullet/muzzle.tscn" id="3_ry0ki"]
-[ext_resource type="Texture2D" uid="uid://dep5gyuwpx3i8" path="res://sprites/roboto/roboto_base/robo1/robo1run-Sheet[32height32wide].png" id="3_yaaxn"]
-[ext_resource type="Texture2D" uid="uid://ptvrc3wc4kq4" path="res://sprites/roboto/roboto_base/robo1/robo1jump-Sheet[32height32wide].png" id="4_hyqx0"]
-[ext_resource type="Texture2D" uid="uid://bghg4ai41dis5" path="res://sprites/roboto/roboto_base/robo1/robot1dash-Sheet[32height32wide].png" id="4_uuxb3"]
-[ext_resource type="Texture2D" uid="uid://c5iqjv8kt6jhl" path="res://sprites/roboto/roboto_base/robo1/robot1death-Sheet[32height64wide].png" id="5_w2hwh"]
-[ext_resource type="Texture2D" uid="uid://cgnjo4jk88j0r" path="res://sprites/roboto/roboto_base/robo1/robo1attack-Sheet32height32wide.png" id="6_hyqx0"]
-[ext_resource type="Texture2D" uid="uid://dm664k5bxbe7l" path="res://sprites/roboto/roboto_base/robo1/robot1damage-Sheet[32height32wide].png" id="6_j60k5"]
-[ext_resource type="Texture2D" uid="uid://bql1k30005wsk" path="res://sprites/roboto/roboto_base/robo1/robo1fallattack-Sheet[48height32wide].png" id="6_p0k4w"]
-[ext_resource type="Texture2D" uid="uid://cox2bg818fiqb" path="res://sprites/roboto/roboto_base/robo1/robo1runattack-Sheet[32height32wide].png" id="6_t11ci"]
-[ext_resource type="Texture2D" uid="uid://beyrt8m73g3d" path="res://sprites/roboto/roboto_base/robo1/robo1jumpattack-Sheet[32height32wide].png" id="8_0111i"]
+[ext_resource type="Texture2D" uid="uid://c3g8g45n77c1s" path="res://sprites/roboto/roboto_base/robo1/robo1run-Sheet[32height32wide].png" id="3_yaaxn"]
+[ext_resource type="Texture2D" uid="uid://bfxgjk1yywgtx" path="res://sprites/roboto/roboto_base/robo1/robo1jump-Sheet[32height32wide].png" id="4_hyqx0"]
+[ext_resource type="Texture2D" uid="uid://dgt4b5gc1ynyw" path="res://sprites/roboto/roboto_base/robo1/robot1dash-Sheet[32height32wide].png" id="4_uuxb3"]
+[ext_resource type="Texture2D" uid="uid://dyh4jpaybjbf5" path="res://sprites/roboto/roboto_base/robo1/robot1death-Sheet[32height64wide].png" id="5_w2hwh"]
+[ext_resource type="Texture2D" uid="uid://dy0djph6lwd3o" path="res://sprites/roboto/roboto_base/robo1/robo1attack-Sheet32height32wide.png" id="6_hyqx0"]
+[ext_resource type="Texture2D" uid="uid://bcf8l58r3mkw1" path="res://sprites/roboto/roboto_base/robo1/robot1damage-Sheet[32height32wide].png" id="6_j60k5"]
+[ext_resource type="Texture2D" uid="uid://cg7tqbsxuunkm" path="res://sprites/roboto/roboto_base/robo1/robo1fallattack-Sheet[48height32wide].png" id="6_p0k4w"]
+[ext_resource type="Texture2D" uid="uid://bqiv7cmb3inga" path="res://sprites/roboto/roboto_base/robo1/robo1runattack-Sheet[32height32wide].png" id="6_t11ci"]
+[ext_resource type="Texture2D" uid="uid://dyn633mlpq62k" path="res://sprites/roboto/roboto_base/robo1/robo1jumpattack-Sheet[32height32wide].png" id="8_0111i"]
 [ext_resource type="PackedScene" uid="uid://bim3vjnsl0ty2" path="res://Personagens/roboto/RobotoBase/bullet/bullet.tscn" id="10_0111i"]
+[ext_resource type="AudioStream" uid="uid://cv0lkwd80m6hy" path="res://ost/laser2.ogg" id="15_cev4j"]
+[ext_resource type="AudioStream" uid="uid://cpixrqh13kgnk" path="res://ost/nes_enemyHit.ogg" id="16_4gaux"]
+[ext_resource type="AudioStream" uid="uid://bsb6w72qmlbj0" path="res://ost/nes_deadSound.ogg" id="17_3hiph"]
+[ext_resource type="AudioStream" uid="uid://b735y2u5m06hp" path="res://ost/jump.ogg" id="18_12e7v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yfq5q"]
 radius = 11.0
@@ -430,7 +434,6 @@ sprite_frames = SubResource("SpriteFrames_hyqx0")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 limit_left = 0
 position_smoothing_enabled = true
 
@@ -439,3 +442,17 @@ position_smoothing_enabled = true
 [node name="FirePoint" type="Marker2D" parent="."]
 visible = false
 position = Vector2(16, 0)
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_cev4j")
+volume_db = -7.0
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_4gaux")
+volume_db = -7.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_3hiph")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_12e7v")
