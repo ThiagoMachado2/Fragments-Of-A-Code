@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cte3ff7yynkkg"]
 
-[ext_resource type="Script" uid="uid://csser0s4sq352" path="res://credit_screen.gd" id="1_vyy4h"]
-[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_1gugr"]
-[ext_resource type="Texture2D" uid="uid://c5uhw0pq2bbro" path="res://GameLogo/F.O.A.C.png" id="3_dbyfm"]
-[ext_resource type="AudioStream" uid="uid://brtlp1vwolsni" path="res://ost/End_Credits_Theme_ogg.ogg" id="3_jjs1y"]
-[ext_resource type="AudioStream" uid="uid://t2vfdio7wled" path="res://ost/selectsound-_1_.ogg" id="4_0wiva"]
+[ext_resource type="Script" uid="uid://goy150jm7hif" path="res://credit_screen.gd" id="1_vyy4h"]
+[ext_resource type="FontFile" uid="uid://cyo34jd4gxqn6" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_1gugr"]
+[ext_resource type="Texture2D" uid="uid://do3imnt1f1f57" path="res://GameLogo/F.O.A.C.png" id="3_dbyfm"]
+[ext_resource type="AudioStream" uid="uid://ckpcccsgi4pm2" path="res://ost/End_Credits_Theme_ogg.ogg" id="3_jjs1y"]
+[ext_resource type="AudioStream" uid="uid://cxi0ij5wixcjk" path="res://ost/selectsound-_1_.ogg" id="4_0wiva"]
 
 [node name="CreditScreen" type="Control"]
 layout_mode = 3
@@ -43,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_1gugr")
 text = "Lucas Souza
-Thiago
+Thiago Machado
 Gabriel Lohan
 David Kauan"
 fit_content = true

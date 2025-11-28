@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://3yshae0y20ci"]
 
-[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="1_4ctsq"]
-[ext_resource type="Texture2D" uid="uid://topj6pvnb1kl" path="res://MenuPause/PauseLogo.png" id="1_d03xs"]
+[ext_resource type="FontFile" uid="uid://cyo34jd4gxqn6" path="res://fontes/CyberpunkCraftpixPixel.otf" id="1_4ctsq"]
+[ext_resource type="Texture2D" uid="uid://c747gvk0f27sa" path="res://MenuPause/PauseLogo.png" id="1_d03xs"]
 [ext_resource type="Theme" uid="uid://oik810sixw0l" path="res://MenuPause/pause_menu.tres" id="1_l7oia"]
 [ext_resource type="Script" uid="uid://c37ijx7fbg5xj" path="res://MenuPause/pause_menu.gd" id="1_vj4dl"]
 [ext_resource type="AudioStream" uid="uid://2g8577fydd2c" path="res://ost/vgmenuselect.ogg" id="2_qowx4"]

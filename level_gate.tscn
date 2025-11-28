@@ -95,5 +95,6 @@ sprite_frames = SubResource("SpriteFrames_a6cql")
 animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(5.5, 0)
 shape = SubResource("RectangleShape2D_gfnve")
