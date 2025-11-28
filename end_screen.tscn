@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://lng5ul4lc1us"]
+
+[ext_resource type="Script" uid="uid://b6at3esse3hmq" path="res://end_screen.gd" id="1_my301"]
+[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_abjgy"]
+
+[sub_resource type="Animation" id="Animation_3iaq5"]
+resource_name = "Fade in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.000693898, 0.000693898, 0.000693898, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_abjgy"]
+resource_name = "Fade out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_my301"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.000693898, 0.000693898, 0.000693898, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_abjgy"]
+_data = {
+&"Fade in": SubResource("Animation_3iaq5"),
+&"Fade out": SubResource("Animation_abjgy"),
+&"RESET": SubResource("Animation_my301")
+}
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource("1_my301")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 579.0
+offset_bottom = 332.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 161.0
+offset_right = 464.0
+offset_bottom = 217.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_abjgy")
+theme_override_font_sizes/font_size = 53
+text = "Continua..."
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -1.0
+offset_right = 577.0
+offset_bottom = 324.0
+color = Color(0.000693898, 0.000693898, 0.000693898, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_abjgy")
+}

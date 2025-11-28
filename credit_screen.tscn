@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://cte3ff7yynkkg"]
+
+[ext_resource type="Script" uid="uid://csser0s4sq352" path="res://credit_screen.gd" id="1_vyy4h"]
+[ext_resource type="FontFile" uid="uid://bln082r8sebo2" path="res://fontes/CyberpunkCraftpixPixel.otf" id="2_1gugr"]
+[ext_resource type="Texture2D" uid="uid://c5uhw0pq2bbro" path="res://GameLogo/F.O.A.C.png" id="3_dbyfm"]
+[ext_resource type="AudioStream" uid="uid://brtlp1vwolsni" path="res://ost/End_Credits_Theme_ogg.ogg" id="3_jjs1y"]
+[ext_resource type="AudioStream" uid="uid://t2vfdio7wled" path="res://ost/selectsound-_1_.ogg" id="4_0wiva"]
+
+[node name="CreditScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vyy4h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 577.0
+offset_bottom = 324.0
+color = Color(0.00234459, 0.00234459, 0.00234459, 1)
+
+[node name="CanvasLayer_FADER" type="CanvasLayer" parent="."]
+
+[node name="FadeFader" type="ColorRect" parent="CanvasLayer_FADER"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00234459, 0.00234459, 0.00234459, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 161.0
+offset_right = 87.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_1gugr")
+text = "Lucas Souza
+Thiago
+Gabriel Lohan
+David Kauan"
+fit_content = true
+scroll_following = true
+horizontal_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="FinalPromptLabel" type="Label" parent="CanvasLayer2"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -11.5
+offset_right = 109.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1gugr")
+text = "Aperte enter para continuar"
+
+[node name="LogoTextureRect" type="TextureRect" parent="CanvasLayer2"]
+offset_left = 207.0
+offset_top = 167.0
+offset_right = 370.0
+offset_bottom = 320.0
+texture = ExtResource("3_dbyfm")
+expand_mode = 1
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jjs1y")
+autoplay = true
+parameters/looping = true
+
+[node name="EnterEchoPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0wiva")
+
+[node name="ExitFader" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 576.0
+offset_bottom = 324.0
