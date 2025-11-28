@@ -2450,7 +2450,7 @@ position = Vector2(538, -8)
 
 [node name="LevelGate" parent="." instance=ExtResource("55_vykae")]
 position = Vector2(4345, -175)
-proxima_fase = "uid://bf7qst4nr5hip"
+proxima_fase = "uid://lng5ul4lc1us"
 
 [node name="HUD" parent="." instance=ExtResource("54_lscnr")]
 
